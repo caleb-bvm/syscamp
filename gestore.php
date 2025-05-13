@@ -14,8 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Insertar en la base de datos
-    $query = "INSERT INTO public.usuarios (id_personas, id_rol, codigo_personas, correo_personas, clave_persona, nombre_personas, apellido_persona, documento_de_identificacion, id_distrito_reside, id__depertamento_labora) 
-              VALUES ('$username', '$email', '$nombres', '$apellidos', '$password_hash', $rol_id)";
+    $query = "INSERT INTO public.usuarios (id_persona, id_rol, codigo_personas, correo_personas, clave_persona, nombre_personas, apellido_persona, documento_de_identificacion, id_distrito_reside, id__depertamento_labora) 
+              VALUES ($id_persona, $id_rol, '$codigo_persona', '$correo_persona', '$clave_persona', '$nombre_personas', '$apellido_persona', '$documento_de_identificacion', $id_distrito_reside, $id__depertamento_labora)";
     
     $resultado = pg_query($conexion, $query);
 
