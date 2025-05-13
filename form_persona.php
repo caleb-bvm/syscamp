@@ -91,11 +91,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">ID Distrito</label>
-            <input type="number" class="form-control" name="id_distrito_reside" required>
-        </div>
-
+      <div class="mb-3">
+                <label for="departamento" class="form-label">Distrito Laboral</label>
+                <select class="form-select" id="rol_id" name="rol_id" required>
+                    <?php 
+                    $query = "SELECT * FROM distrito";
+                    $resultado = pg_query($conexion, $query);
+                    while ($fila = pg_fetch_assoc($resultado)) {
+                        echo "<option value='" . $fila['id_distrito'] . "'>" . $fila['nombre_distrito'] . "</option>";
+                    }
+                    ?>
+                </select>
+</div>
         <div class="mb-3">
             <label class="form-label">ID Departamento</label>
             <input type="number" class="form-control" name="id_departamento_labora" required>
