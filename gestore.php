@@ -1,4 +1,4 @@
-<o?php
+<?php
 include("configuracion/conexion.php");
 
 // Procesar envío del formulario
