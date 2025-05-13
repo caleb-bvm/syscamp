@@ -26,31 +26,46 @@ include("configuracion/conexion.php");
                     ?>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="distrito" class="form-label">Distrito</label>
+                <select class="form-select" id="distrito" name="distrito" disabled required>
+                    <option value="">Seleccione un distrito</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
 
-            <div class="mb-3">
-                <label for="email" class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
+            
+<script>
+    const departamentoSelect = document.getElementById('departamento');
+    const distritoSelect = document.getElementById('distrito');
 
-            <div class="mb-3">
-                <label for="nombres" class="form-label">Nombres</label>
-                <input type="text" class="form-control" id="nombres" name="nombres" required>
-            </div>
+    departamentoSelect.addEventListener('change', function() {
+        const departamentoId = this.value;
 
-            <div class="mb-3">
-                <label for="apellidos" class="form-label">Apellidos</label>
-                <input type="text" class="form-control" id="apellidos" name="apellidos" required>
-            </div>
+        if (!departamentoId) {
+            distritoSelect.disabled = true;
+            distritoSelect.innerHTML = '<option value="">Seleccione un distrito</option>';
+            return;
+        }
 
-            <div class="mb-3">
-                <label for="password_hash" class="form-label">Contraseña</label>
-                <input type="text" class="form-control" id="password_hash" name="password_hash" required>
-            </div>
-
-
-            <button type="submit" class="btn btn-primary w-100">Guardar Usuario</button>
-        </form>
-    </div>
+        fetch('obtener_distritos.php?departamento_id=' + departamentoId)
+            .then(response => response.json())
+            .then(data => {
+                distritoSelect.disabled = false;
+                distritoSelect.innerHTML = '<option value="">Seleccione un distrito</option>';
+                data.forEach(distrito => {
+                    const option = document.createElement('option');
+                    option.value = distrito.id_distrito; // Asegúrate de usar el nombre correcto de la columna del ID del distrito
+                    option.textContent = distrito.nombre_distrito; // Asegúrate de usar el nombre correcto de la columna del nombre del distrito
+                    distritoSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener los distritos:', error);
+            });
+    });
+</script>
 
 
 
