@@ -1,4 +1,4 @@
-<o?php
+<?php
 include("configuracion/conexion.php");
 
 // Procesar envío del formulario
@@ -71,21 +71,18 @@ include_once("header.php");
                     <option value="1">Administrador</option>
                     <option value="2">Editor</option>
                     <option value="3">Visor</option>
-<div class ="mb-3">
-    <table for ="departamento" class ="form-label">Distrito Laboral</table>
-                <select class ="form-select" id="rol_id" name="rol_id" required>
-                    <option value="" -- Seleccione un departamento-- </option>
-                
-                   <?php 
+<div class="mb-3">
+                <label for="departamento" class="form-label">Distrito Laboral</label>
+                <select class="form-select" id="rol_id" name="rol_id" required>
+                    <?php 
                     $query = "SELECT * FROM distrito";
                     $resultado = pg_query($conexion, $query);
                     while ($fila = pg_fetch_assoc($resultado)) {
-                        echo "<option value='" . $fila['id_distrito'] . "'>" . $fila ['nombre_distrito'] . "</option>";
+                        echo "<option value='" . $fila['id_distrito'] . "'>" . $fila['nombre_distrito'] . "</option>";
                     }
                     ?>
-
-                
                 </select>
+            </div>
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Guardar Usuario</button>
