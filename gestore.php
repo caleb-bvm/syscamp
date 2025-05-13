@@ -3,15 +3,15 @@ include("configuracion/conexion.php");
 
 // Procesar envío del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_personas =$_POST['id_personas'];
-    $id_rol = $_POST ['id_rol'];
+    $id_rol = $_POST['id_rol'];
     $codigo_persona = $_POST['codigo_persona'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $nombres = $_POST['nombres'];
-    $apellidos = $_POST['apellidos'];
-    $password_hash = $_POST['password_hash'];
-
+    $correo_persona = $_POST['correo_persona'];
+    $clave_persona = $_POST['clave_persona'];
+    $nombre_persona = $_POST['nombre_persona'];
+    $apellido_persona = $_POST['apellido_persona'];
+    $documento_de_identificacion = $_POST['documento_de_identificacion'];
+    $id_distrito_reside = $_POST['id_distrito_reside'];
+    $id_departamento_labora = $_POST['id_departamento_labora'];
 
     // Insertar en la base de datos
     $query = "INSERT INTO public.usuarios (id_persona, id_rol, codigo_personas, correo_personas, clave_persona, nombre_personas, apellido_persona, documento_de_identificacion, id_distrito_reside, id__depertamento_labora) 
