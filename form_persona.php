@@ -91,29 +91,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
         </div>
 
-      <div class="mb-3">
-                <label for="departamento" class="form-label">Distrito Laboral</label>
-                <select class="form-select" id="rol_id" name="rol_id" required>
-                    <?php 
-                    $query = "SELECT * FROM distrito";
-                    $resultado = pg_query($conexion, $query);
-                    while ($fila = pg_fetch_assoc($resultado)) {
-                        echo "<option value='" . $fila['id_distrito'] . "'>" . $fila['nombre_distrito'] . "</option>";
-                    }
-                    ?>
-                </select>
-<div class="mb-3">
-    <label for="departamento" class="form-label">Departamento</label>
-    <select class="form-select" id="departamento_id" name="id_departamento" required>
-        <?php 
-        $query_departamentos = "SELECT * FROM departamento";
-        $resultado_departamentos = pg_query($conexion, $query_departamentos);
-        while ($fila_departamento = pg_fetch_assoc($resultado_departamentos)) {
-            echo "<option value='" . $fila_departamento['id_departamento'] . "'>" . $fila_departamento['nombre_departamento'] . "</option>";
-        }
-        ?>
-    </select>
-</div>
+        <div class="mb-3">
+            <label class="form-label">Distrito de Residencia</label>
+            <select class="form-select" name="id_distrito_reside" required>
+                <option value="">-- Selecciona un distrito --</option>
+                <?php 
+                $query = "SELECT * FROM distrito";
+                $resultado = pg_query($conexion, $query);
+                while ($fila = pg_fetch_assoc($resultado)) {
+                    echo "<option value='" . $fila['id_distrito'] . "'>" . $fila['nombre_distrito'] . "</option>";
+                }
+                ?>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">ID Departamento</label>
+            <input type="number" class="form-control" name="id_departamento_labora" required>
+        </div>
 
         <button type="submit" class="btn btn-primary w-100">Guardar Persona</button>
     </form>
