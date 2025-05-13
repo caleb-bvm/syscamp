@@ -77,28 +77,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Documento de Identificación (DUI)</label>
+            <label class="form-label">Documento de Identificación</label>
             <input type="text" class="form-control" name="documento_de_identificacion" required>
         </div>
 
+        <!-- Rol dinámico -->
         <div class="mb-3">
             <label class="form-label">Rol</label>
             <select class="form-select" name="id_rol" required>
                 <option value="">-- Selecciona un rol --</option>
-                <option value="1">Administrador</option>
-                <option value="2">Editor</option>
-                <option value="3">Visor</option>
+                <?php
+                $roles = pg_query($conexion, "SELECT * FROM rol");
+                while ($rol = pg_fetch_assoc($roles)) {
+                    echo "<option value='{$rol['id_rol']}'>{$rol['nombre_rol']}</option>";
+                }
+                ?>
             </select>
         </div>
 
+        <!-- Distrito dinámico -->
         <div class="mb-3">
-            <label class="form-label">ID Distrito</label>
-            <input type="number" class="form-control" name="id_distrito_reside" required>
+            <label class="form-label">Distrito de Residencia</label>
+            <select class="form-select" name="id_distrito_reside" required>
+                <option value="">-- Selecciona un distrito --</option>
+                <?php
+                $distritos = pg_query($conexion, "SELECT * FROM distrito");
+                while ($distrito = pg_fetch_assoc($distritos)) {
+                    echo "<option value='{$distrito['id_distrito']}'>{$distrito['nombre_distrito']}</option>";
+                }
+                ?>
+            </select>
         </div>
 
+        <!-- Departamento dinámico -->
         <div class="mb-3">
-            <label class="form-label">ID Departamento</label>
-            <input type="number" class="form-control" name="id_departamento_labora" required>
+            <label class="form-label">Departamento donde labora</label>
+            <select class="form-select" name="id_departamento_labora" required>
+                <option value="">-- Selecciona un departamento --</option>
+                <?php
+                $departamentos = pg_query($conexion, "SELECT * FROM departamento");
+                while ($depto = pg_fetch_assoc($departamentos)) {
+                    echo "<option value='{$depto['id_departamento']}'>{$depto['nombre_departamento']}</option>";
+                }
+                ?>
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Guardar Persona</button>
