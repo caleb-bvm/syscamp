@@ -71,10 +71,12 @@ include_once("header.php");
                     <option value="1">Administrador</option>
                     <option value="2">Editor</option>
                     <option value="3">Visor</option>
-<div class="mb-3">
-                <label for="departamento" class="form-label">Distrito Laboral</label>
-                <select class="form-select" id="rol_id" name="rol_id" required>
-                    <?php 
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="distrito" class="form-label">Distrito Laboral</label>
+                <select class="form-select" id="distrito" name="distrito" required>
+                    <?php
                     $query = "SELECT * FROM distrito";
                     $resultado = pg_query($conexion, $query);
                     while ($fila = pg_fetch_assoc($resultado)) {
@@ -82,7 +84,7 @@ include_once("header.php");
                     }
                     ?>
                 </select>
-            </div>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Guardar Usuario</button>
