@@ -1,42 +1,105 @@
+/* styles.css */
 
-.login-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+body {
+    background-color: #1a1a1a; /* Very dark grey background */
+    color: #f0f0f0; /* Very light grey text */
+    font-family: Arial, sans-serif;
 }
 
-.login-container h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
+header {
+    background-color: #222222; /* Slightly lighter dark grey for header */
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow */
 }
 
-.login-container input[type="text"],
-.login-container input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+.navbar-brand {
+    color: #ffffff; /* White brand text */
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-.login-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+.navbar-nav .nav-link {
+    color: #cccccc; /* Light grey nav links */
+    margin-right: 1rem;
 }
 
-.login-container button:hover {
-    background-color: #0056b3;
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: #ffffff; /* White on hover/focus */
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: #ffffff; /* White for active link */
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'%3e%3c/path%3e%3c/svg%3e");
+}
+
+.navbar-toggler:hover,
+.navbar-toggler:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.dropdown-menu {
+    background-color: #333333; /* Dark grey dropdown */
+    border-color: #444444;
+}
+
+.dropdown-item {
+    color: #dddddd; /* Light grey dropdown items */
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #444444; /* Slightly lighter on hover */
+    color: #ffffff;
+}
+
+.dropdown-divider {
+    border-top-color: #444444;
+}
+
+.form-control {
+    background-color: #333333; /* Dark grey form control */
+    border-color: #555555;
+    color: #eeeeee;
+}
+
+.form-control::placeholder {
+    color: #aaaaaa;
+}
+
+.btn-outline-success {
+    color: #ffffff;
+    border-color: #0d6efd;
+}
+
+.btn-outline-success:hover {
+    background-color: #0d6efd;
+    color: #ffffff;
+}
+
+main {
+    padding: 2rem 0;
+}
+
+h1 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+p {
+    color: #eeeeee;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
