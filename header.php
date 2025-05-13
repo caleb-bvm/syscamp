@@ -31,7 +31,7 @@ if (!isset($_SESSION['username'])) {
                             <a class="nav-link" href="visitas.php">Visitar Centro Educativo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="gestore.php">Añadir Gestores</a>
+                            <a class="nav-link" href="form_persona.php">Añadir Gestores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="escuelas.php">Centros Educativos</a>

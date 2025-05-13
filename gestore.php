@@ -1,4 +1,4 @@
-<?php
+<div?php
 include("configuracion/conexion.php");
 
 // Procesar envío del formulario
@@ -64,13 +64,14 @@ include_once("header.php");
                 <input type="text" class="form-control" id="password_hash" name="password_hash" required>
             </div>
 
-            <div class="mb-3">
+            < class="mb-3">
                 <label for="rol_id" class="form-label">Rol</label>
-                <select class="form-select" id="rol_id" name="rol_id" required>
+                <sele class="form-select" id="rol_id" name="rol_id" required>
                     <option value="">-- Selecciona un rol --</option>
                     <option value="1">Administrador</option>
                     <option value="2">Editor</option>
                     <option value="3">Visor</option>
+        </div>
 <div class="mb-3">
                 <label for="departamento" class="form-label">Distrito Laboral</label>
                 <select class="form-select" id="rol_id" name="rol_id" required>
@@ -82,7 +83,7 @@ include_once("header.php");
                     }
                     ?>
                 </select>
-            </div>
+</div>
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Guardar Usuario</button>
