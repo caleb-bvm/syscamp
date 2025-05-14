@@ -58,3 +58,15 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
         </nav>
+        <div class="container mt-5">
+    <div class="p-5 mb-4 rounded-3 shadow" style="background-color: #222222; border-left: 6px solid #0d6efd;">
+        <div class="container-fluid py-3 text-center">
+            <h1 class="display-5 fw-bold" style="color: var(--brand-color);">
+                Bienvenido/a a <span style="color: #0d6efd;">SYSCAMP</span>
+            </h1>
+            <p class="fs-5" style="color: var(--text-color);">
+                Plataforma de gestión para visitas, centros educativos y supervisión de gestores. Optimiza tu trabajo desde un solo lugar.
+            </p>
+        </div>
+    </div>
+</div>
