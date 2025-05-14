@@ -36,6 +36,9 @@ if (!isset($_SESSION['username'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="escuelas.php">Centros Educativos</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportes.php">Reportes</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Configuracion
