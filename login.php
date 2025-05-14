@@ -1,4 +1,5 @@
 <?php
+$mensaje = "";
 session_start();
 include ('configuracion/conexion.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -53,9 +54,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" name="password" required>
             </div>
-
-            <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+            <br>
+            <button type="submit" class="btn btn-primary w-100" style="height:45px">Ingresar</button>
+            <br>
+            <div class="text-center my-2">——— o inicia sesión con ———</div>
+            <br>
+            <button type="submit" class="btn btn-light w-100">
+                <img src="google-brands.svg" alt="Google Icon" style="margin-right: 8px; height: 30px;">
+            </button>
+            <br>
         </form>
+    </div>
     </div>
 </body>
 </html>
