@@ -1,64 +1,122 @@
 <?php
-require('fpdf/fpdf.php');
-require_once 'conexion.php'; //conexión a PostgreSQL
+include_once('header.php');
+include_once('configuracion/conexion.php');
 
-// Consulta general de personas registradas
-$sql = "
-    SELECT p.id_persona, p.nombre, p.apellido, r.nombre_rol, i.nombre_institucion, d.nombre_departamento, dis.nombre_distrito
-    FROM persona p
-    LEFT JOIN rol r ON p.id_rol = r.id_rol
-    LEFT JOIN institucion i ON p.id_institucion = i.id_institucion
-    LEFT JOIN distrito dis ON p.id_distrito = dis.id_distrito
-    LEFT JOIN departamento d ON dis.id_departamento = d.id_departamento
-    ORDER BY p.nombre ASC;
+// Capturar filtros si existen
+$filtro_rol = $_GET['filtro_rol'] ?? '';
+$filtro_distrito = $_GET['filtro_distrito'] ?? '';
+$filtro_departamento = $_GET['filtro_departamento'] ?? '';
+
+// Construir consulta SQL dinámica
+$condiciones = [];
+if (!empty($filtro_rol)) {
+    $condiciones[] = "p.id_rol = $filtro_rol";
+}
+if (!empty($filtro_distrito)) {
+    $condiciones[] = "p.id_distrito_reside = $filtro_distrito";
+}
+if (!empty($filtro_departamento)) {
+    $condiciones[] = "p.id_departamento_labora = $filtro_departamento";
+}
+$where = count($condiciones) > 0 ? "WHERE " . implode(" AND ", $condiciones) : "";
+
+// Consulta final
+$query = "
+SELECT p.codigo_persona, p.nombre_persona, p.apellido_persona, p.correo_persona,
+r.nombre_rol, d.nombre_distrito, dept.nombre_departamento
+FROM persona p
+JOIN rol r ON p.id_rol = r.id_rol
+JOIN distrito d ON p.id_distrito_reside = d.id_distrito
+JOIN departamento dept ON p.id_departamento_labora = dept.id_departamento
+$where
+ORDER BY p.codigo_persona ASC
 ";
-$result = pg_query($conexion, $sql);
 
-class PDF extends FPDF {
-    function Header() {
-        $this->SetFont('Arial', 'B', 14);
-        $this->Cell(0, 10, utf8_decode('Reporte General de Personas Registradas'), 0, 1, 'C');
-        $this->Ln(5);
-    }
-
-    function Footer() {
-        $this->SetY(-15);
-        $this->SetFont('Arial', 'I', 8);
-        $this->Cell(0, 10, 'Página ' . $this->PageNo(), 0, 0, 'C');
-    }
-
-    function TablaPersonas($data) {
-        $this->SetFont('Arial', 'B', 10);
-        $this->SetFillColor(200, 220, 255);
-        $this->Cell(25, 8, 'ID', 1, 0, 'C', true);
-        $this->Cell(45, 8, 'Nombre', 1, 0, 'C', true);
-        $this->Cell(45, 8, 'Apellido', 1, 0, 'C', true);
-        $this->Cell(30, 8, 'Rol', 1, 0, 'C', true);
-        $this->Cell(40, 8, 'Institucion', 1, 0, 'C', true);
-        $this->Cell(30, 8, 'Departamento', 1, 0, 'C', true);
-        $this->Cell(30, 8, 'Distrito', 1, 1, 'C', true);
-
-        $this->SetFont('Arial', '', 9);
-        foreach ($data as $row) {
-            $this->Cell(25, 7, $row['id_persona'], 1);
-            $this->Cell(45, 7, utf8_decode($row['nombre']), 1);
-            $this->Cell(45, 7, utf8_decode($row['apellido']), 1);
-            $this->Cell(30, 7, utf8_decode($row['nombre_rol']), 1);
-            $this->Cell(40, 7, utf8_decode($row['nombre_institucion']), 1);
-            $this->Cell(30, 7, utf8_decode($row['nombre_departamento']), 1);
-            $this->Cell(30, 7, utf8_decode($row['nombre_distrito']), 1);
-            $this->Ln();
-        }
-    }
-}
-
-$data = [];
-while ($row = pg_fetch_assoc($result)) {
-    $data[] = $row;
-}
-
-$pdf = new PDF();
-$pdf->AddPage('L');
-$pdf->TablaPersonas($data);
-$pdf->Output('I', 'reporte_personas.pdf');
+$resultado = pg_query($conexion, $query);
 ?>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">📋 Reporte General de Personas</h2>
+
+    <!-- Filtros -->
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-4">
+            <label class="form-label">Filtrar por Rol</label>
+            <select name="filtro_rol" class="form-select">
+                <option value="">Todos los roles</option>
+                <?php
+                $roles = pg_query($conexion, "SELECT * FROM rol");
+                while ($rol = pg_fetch_assoc($roles)) {
+                    $selected = ($filtro_rol == $rol['id_rol']) ? "selected" : "";
+                    echo "<option value='{$rol['id_rol']}' $selected>{$rol['nombre_rol']}</option>";
+                }
+                ?>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Filtrar por Distrito</label>
+            <select name="filtro_distrito" class="form-select">
+                <option value="">Todos los distritos</option>
+                <?php
+                $distritos = pg_query($conexion, "SELECT * FROM distrito");
+                while ($dist = pg_fetch_assoc($distritos)) {
+                    $selected = ($filtro_distrito == $dist['id_distrito']) ? "selected" : "";
+                    echo "<option value='{$dist['id_distrito']}' $selected>{$dist['nombre_distrito']}</option>";
+                }
+                ?>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Filtrar por Departamento</label>
+            <select name="filtro_departamento" class="form-select">
+                <option value="">Todos los departamentos</option>
+                <?php
+                $departamentos = pg_query($conexion, "SELECT * FROM departamento");
+                while ($dept = pg_fetch_assoc($departamentos)) {
+                    $selected = ($filtro_departamento == $dept['id_departamento']) ? "selected" : "";
+                    echo "<option value='{$dept['id_departamento']}' $selected>{$dept['nombre_departamento']}</option>";
+                }
+                ?>
+            </select>
+        </div>
+
+        <div class="col-12 text-end">
+            <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+            <a href="exportar_reporte_personas.php?filtro_rol=<?=$filtro_rol?>&filtro_distrito=<?=$filtro_distrito?>&filtro_departamento=<?=$filtro_departamento?>" class="btn btn-danger">📄 Exportar PDF</a>
+        </div>
+    </form>
+
+    <!-- Tabla -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Rol</th>
+                    <th>Distrito</th>
+                    <th>Departamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($fila = pg_fetch_assoc($resultado)): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($fila['codigo_persona']) ?></td>
+                        <td><?= htmlspecialchars($fila['nombre_persona']) ?></td>
+                        <td><?= htmlspecialchars($fila['apellido_persona']) ?></td>
+                        <td><?= htmlspecialchars($fila['correo_persona']) ?></td>
+                        <td><?= htmlspecialchars($fila['nombre_rol']) ?></td>
+                        <td><?= htmlspecialchars($fila['nombre_distrito']) ?></td>
+                        <td><?= htmlspecialchars($fila['nombre_departamento']) ?></td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php include_once('footer.php'); ?>
