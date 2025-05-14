@@ -1,30 +1,34 @@
 <?php
 $mensaje = "";
 session_start();
-include ('configuracion/conexion.php');
+include('configuracion/conexion.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM usuarios WHERE username = '$username'";
+    // Consulta para seleccionar los campos necesarios de la tabla persona
+    $query = "SELECT id_persona, username, clave_persona, id_rol, nombre_persona 
+              FROM persona 
+              WHERE username = '$username'";
     $resultado = pg_query($conexion, $query);
     if ($resultado && pg_num_rows($resultado) == 1) {
         $usuario = pg_fetch_assoc($resultado);
-        if ($usuario['password_hash'] === $password) {
-            $_SESSION['id'] = $usuario['id'];
+        // Verificar la contraseña usando el campo clave_persona
+        if ($usuario['clave_persona'] === $password) {
+            $_SESSION['id_persona'] = $usuario['id_persona'];
             $_SESSION['username'] = $usuario['username'];
-            $_SESSION['rol_id'] = $usuario['rol_id'];
-            $_SESSION['nombres'] = $usuario['nombres'];
+            $_SESSION['id_rol'] = $usuario['id_rol'];
+            $_SESSION['nombre_persona'] = $usuario['nombre_persona'];
 
-            
             header("Location: index.php");
             exit();
         } else {
             $mensaje = "Contraseña incorrecta.";
         }
+    } else {
+        $mensaje = "Usuario no encontrado.";
     }
-
-}   
+}
 ?>
 
 <!DOCTYPE html>

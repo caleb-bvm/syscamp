@@ -15,15 +15,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $documento_de_identificacion = $_POST['documento_de_identificacion'];
     $id_distrito_reside = $_POST['id_distrito_reside'];
     $id_departamento_labora = $_POST['id_departamento_labora'];
+    $username = $_POST['username'];
 
     $query = "INSERT INTO persona (
         id_rol, codigo_persona, correo_persona, clave_persona,
         nombre_persona, apellido_persona, documento_de_identificacion,
-        id_distrito_reside, id_departamento_labora
+        id_distrito_reside, id_departamento_labora, username
     ) VALUES (
         $id_rol, '$codigo_persona', '$correo_persona', '$clave_persona',
         '$nombre_persona', '$apellido_persona', '$documento_de_identificacion',
-        $id_distrito_reside, $id_departamento_labora
+        $id_distrito_reside, $id_departamento_labora, '$username'
     )";
 
     $resultado = pg_query($conexion, $query);
@@ -37,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 
-<body class="bg-light">
 <div class="container mt-5">
     <h2 class="text-center mb-4">Formulario de Registro de Persona</h2>
 
@@ -189,9 +189,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
         </div>
 
+        <div class="mb-3">
+            <label class="form-label">Nombre de Usuario</label>
+            <input type="text" class="form-control" name="username" required>
+        </div>
 
-                
-        
         <button type="submit" class="btn btn-primary w-100">Guardar Persona</button>
     </form>
 </div>
