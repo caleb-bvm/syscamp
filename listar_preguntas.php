@@ -14,6 +14,10 @@ if (!$resultado) {
 
 <div class="container mt-5">
     <h2>Listado de Preguntas</h2>
+    <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminada'): ?>
+    <div class="alert alert-success">Pregunta eliminada correctamente.</div>
+<?php endif; ?>
+
 
     <a href="insertar_pregunta.php" class="btn btn-primary mb-3">Insertar Nueva Pregunta</a>
 
@@ -26,25 +30,26 @@ if (!$resultado) {
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
-            <?php if ($resultado && pg_num_rows($resultado) > 0): ?>
-                <?php while ($fila = pg_fetch_assoc($resultado)): ?>
-                    <tr>
-                        <td><?php echo $fila['cod_pregunta']; ?></td>
-                        <td><?php echo htmlspecialchars($fila['pregunta']); ?></td>
-                        <td><?php echo $fila['categoria']; ?></td>
-                        <td>
-                            <a href="editar_pregunta.php?id=<?php echo $fila['cod_pregunta']; ?>" class="btn btn-primary btn-sm">Editar</a>
-                            <!-- Puedes agregar también botón de eliminar si lo deseas -->
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="4" class="text-center">No hay preguntas registradas.</td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
+      <tbody>
+    <?php if ($resultado && pg_num_rows($resultado) > 0): ?>
+        <?php while ($fila = pg_fetch_assoc($resultado)): ?>
+            <tr>
+                <td><?php echo $fila['cod_pregunta']; ?></td>
+                <td><?php echo htmlspecialchars($fila['pregunta']); ?></td>
+                <td><?php echo $fila['categoria']; ?></td>
+                <td>
+                    <a href="editar_pregunta.php?id=<?php echo $fila['cod_pregunta']; ?>" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="eliminar_pregunta.php?id=<?php echo $fila['cod_pregunta']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta pregunta?');">Eliminar</a>
+                </td>
+            </tr>
+        <?php endwhile; ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="4" class="text-center">No hay preguntas registradas.</td>
+        </tr>
+    <?php endif; ?>
+</tbody>
+
     </table>
 </div>
 
