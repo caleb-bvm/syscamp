@@ -51,7 +51,6 @@ if (!isset($_SESSION['username'])) {
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="ver_usuarios.php">Ver perfil</a></li>
-                                <li><a class="dropdown-item" href="#">Editar perfil</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="cerrar.php">Cerrar sesión</a></li>
                             </ul>
