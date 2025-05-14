@@ -1,4 +1,7 @@
 <?php
+include_once('header.php');?>
+
+<?php
 include("configuracion/conexion.php");
 
 // Procesar envío del formulario
@@ -33,19 +36,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulario Persona</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+
 <body class="bg-light">
 <div class="container mt-5">
     <h2 class="text-center mb-4">Formulario de Registro de Persona</h2>
 
     <?php if (!empty($mensaje)): ?>
-        <div class="alert alert-info text-center">
+        <div class="alert alert-dark text-center">
             <?php echo htmlspecialchars($mensaje); ?>
         </div>
     <?php endif; ?>
@@ -95,19 +92,88 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
         </div>
 
-        <!-- Distrito dinámico -->
-        <div class="mb-3">
-            <label class="form-label">Distrito de Residencia</label>
-            <select class="form-select" name="id_distrito_reside" required>
-                <option value="">-- Selecciona un distrito --</option>
-                <?php
-                $distritos = pg_query($conexion, "SELECT * FROM distrito");
-                while ($distrito = pg_fetch_assoc($distritos)) {
-                    echo "<option value='{$distrito['id_distrito']}'>{$distrito['nombre_distrito']}</option>";
-                }
-                ?>
-            </select>
-        </div>
+         <form method="post" class="card p-4 shadow-sm">
+            <div class="mb-3">
+                <label for="departamento" class="form-label">Departamento de residencia</label>
+                <select class="form-select" id="departamento" name="departamento" required>
+                    <?php 
+                    $query = "SELECT * FROM departamento";
+                    $resultado = pg_query($conexion, $query);
+                    while ($fila = pg_fetch_assoc($resultado)) {
+                        echo "<option value='" . $fila['id_departamento'] . "'>" . $fila['nombre_departamento'] . "</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="municipio" class="form-label">Municipio</label>
+                <select class="form-select" id="municipio" name="municipio" disabled required>
+                    <option value="">Seleccione un municipio</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="distrito" class="form-label">Distrito</label>
+                <select class="form-select" id="distrito" name="id_distrito_reside" disabled required>
+                    <option value="">Seleccione un distrito</option>
+                </select>
+            </div>
+<script>
+    const departamentoSelect = document.getElementById('departamento');
+    const municipioSelect = document.getElementById('municipio');
+    const distritoSelect = document.getElementById('distrito');
+
+    // Cargar municipios al cambiar el departamento
+    departamentoSelect.addEventListener('change', function() {
+        const departamentoId = this.value;
+
+        municipioSelect.disabled = true;
+        municipioSelect.innerHTML = '<option value="">Seleccione un municipio</option>';
+        distritoSelect.disabled = true;
+        distritoSelect.innerHTML = '<option value="">Seleccione un distrito</option>';
+
+        if (departamentoId) {
+            fetch('obtener_municipios.php?departamento_id=' + departamentoId)
+                .then(response => response.json())
+                .then(data => {
+                    municipioSelect.disabled = false;
+                    data.forEach(municipio => {
+                        const option = document.createElement('option');
+                        option.value = municipio.id_municipio;
+                        option.textContent = municipio.nombre_municipio;
+                        municipioSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener los municipios:', error);
+                });
+        }
+    });
+
+    // Cargar distritos al cambiar el municipio
+    municipioSelect.addEventListener('change', function() {
+        const municipioId = this.value;
+
+        distritoSelect.disabled = true;
+        distritoSelect.innerHTML = '<option value="">Seleccione un distrito</option>';
+
+        if (municipioId) {
+            fetch('obtener_distritos.php?municipio_id=' + municipioId) // Nuevo archivo PHP
+                .then(response => response.json())
+                .then(data => {
+                    distritoSelect.disabled = false;
+                    data.forEach(distrito => {
+                        const option = document.createElement('option');
+                        option.value = distrito.id_distrito;
+                        option.textContent = distrito.nombre_distrito;
+                        distritoSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener los distritos:', error);
+                });
+        }
+    });
+</script>
 
         <!-- Departamento dinámico -->
         <div class="mb-3">
@@ -123,8 +189,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
         </div>
 
+
+                
+        
         <button type="submit" class="btn btn-primary w-100">Guardar Persona</button>
     </form>
 </div>
-</body>
-</html>
+
+
+<?php
+include_once('footer.php');?>
