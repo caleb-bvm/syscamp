@@ -44,6 +44,28 @@ include("configuracion/conexion.php");
                     <option value="">Seleccione un centro educativo</option>
                 </select>
             </div>
+
+            <div class="mb-3">
+    <label for="codigo_institucion" class="form-label">Código de la institución</label>
+    <input type="text" class="form-control" id="codigo_institucion" name="codigo_institucion" required>
+</div>
+
+<div class="mb-3">
+    <label for="grado_seccion_turno" class="form-label">Grado, Sección y Turno</label>
+    <input type="text" class="form-control" id="grado_seccion_turno" name="grado_seccion_turno" required>
+</div>
+
+<div class="mb-3">
+    <label for="numero_estudiantes" class="form-label">Número de estudiantes</label>
+    <input type="number" class="form-control" id="numero_estudiantes" name="numero_estudiantes" required min="1">
+</div>
+
+<div class="mb-3">
+    <label for="fecha_acompanamiento" class="form-label">Fecha de acompañamiento</label>
+    <input type="date" class="form-control" id="fecha_acompanamiento" name="fecha_acompanamiento" required>
+</div>
+
+
         
 <script>
     const departamentoSelect = document.getElementById('departamento');
