@@ -84,7 +84,7 @@ $resultado = pg_query($conexion, $query);
 
         <div class="col-12 text-end">
             <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
-            <a href="exportar_reporte_personas.php?filtro_rol=<?=$filtro_rol?>&filtro_distrito=<?=$filtro_distrito?>&filtro_departamento=<?=$filtro_departamento?>" class="btn btn-danger">📄 Exportar PDF</a>
+            <a href="generar_pdf_personas.php?filtro_rol=<?=$filtro_rol?>&filtro_distrito=<?=$filtro_distrito?>&filtro_departamento=<?=$filtro_departamento?>" class="btn btn-danger" target="_blank">📄 Exportar PDF</a>
         </div>
     </form>
 
