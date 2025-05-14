@@ -1,35 +1,81 @@
 /* styles.css */
 
+:root {
+    /* Colores principales */
+    --body-bg: #1a1a1a;
+    --text-color: #f0f0f0;
+    --header-bg: #222222;
+    --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --brand-color: #ffffff;
+    --nav-link-color: #cccccc;
+    --nav-link-hover: #ffffff;
+    --active-nav-link: #ffffff;
+    --dropdown-bg: #333333;
+    --dropdown-border: #444444;
+    --dropdown-item-color: #dddddd;
+    --dropdown-item-hover: #444444;
+    --dropdown-divider-color: #444444;
+    --form-control-bg: #ffffff;
+    --form-control-border: #dee2e6;
+    --form-control-text: #eeeeee;
+    --form-control-placeholder: #aaaaaa;
+    --btn-primary-color: #007bff; /* Azul de Bootstrap */
+    --btn-primary-hover: #0056b3;
+    --btn-secondary-color: #6c757d; /* Gris de Bootstrap */
+    --btn-secondary-hover: #545b62;
+    --btn-success-color: #28a745; /* Verde de Bootstrap */
+    --btn-success-hover: #218838;
+    --btn-outline-success-color: #ffffff;
+    --btn-outline-success-border: #0d6efd;
+    --btn-outline-success-hover-bg: #0d6efd; /* Nuevo: color de fondo para hover */
+    --btn-outline-success-hover-color: #ffffff; /* Nuevo: color de texto para hover */
+    --alert-info-bg: #333333;
+    --alert-info-text: #dddddd;
+    --alert-info-border: #444444;
+    --alert-info-link: #ffffff;
+
+    /* Espaciado */
+    --global-padding: 2rem;
+    --alert-padding-x: 1rem;
+    --alert-padding-y: 1rem;
+    --alert-margin-bottom: 1rem;
+
+    /* Bordes */
+    --border-radius: 0.375rem;
+    --border-width: 1px;
+    --border-radius-lg: 0.5rem;
+}
+
 body {
-    background-color: #1a1a1a; /* Very dark grey background */
-    color: #f0f0f0; /* Very light grey text */
+    background-color: var(--body-bg);
+    color: var(--text-color);
     font-family: Arial, sans-serif;
 }
 
 header {
-    background-color: #222222; /* Slightly lighter dark grey for header */
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    background-color: var(--header-bg);
+    padding: var(--global-padding) 0;
+    box-shadow: var(--header-shadow);
 }
 
 .navbar-brand {
-    color: #ffffff; /* White brand text */
+    color: var(--brand-color);
     font-size: 1.5rem;
     font-weight: bold;
 }
 
 .navbar-nav .nav-link {
-    color: #cccccc; /* Light grey nav links */
+    color: var(--nav-link-color);
     margin-right: 1rem;
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-    color: #ffffff; /* White on hover/focus */
+    color: var(--nav-link-hover);
 }
 
 .navbar-nav .nav-item.active .nav-link {
-    color: #ffffff; /* White for active link */
+    color: var(--active-nav-link);
     font-weight: bold;
 }
 
@@ -47,55 +93,101 @@ header {
 }
 
 .dropdown-menu {
-    background-color: #333333; /* Dark grey dropdown */
-    border-color: #444444;
+    background-color: var(--dropdown-bg);
+    border-color: var(--dropdown-border);
 }
 
 .dropdown-item {
-    color: #dddddd; /* Light grey dropdown items */
+    color: var(--dropdown-item-color);
 }
 
 .dropdown-item:hover,
 .dropdown-item:focus {
-    background-color: #444444; /* Slightly lighter on hover */
-    color: #ffffff;
+    background-color: var(--dropdown-item-hover);
+    color: var(--nav-link-hover);
 }
 
 .dropdown-divider {
-    border-top-color: #444444;
+    border-top-color: var(--dropdown-divider-color);
 }
 
 .form-control {
-    background-color: #333333; /* Dark grey form control */
-    border-color: #555555;
-    color: #eeeeee;
+    background-color: var(--form-control-bg);
+    border-color: var(--form-control-border);
+    color: var(--form-control-text);
 }
 
 .form-control::placeholder {
-    color: #aaaaaa;
+    color: var(--form-control-placeholder);
+}
+
+.btn {
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: var(--border-width) solid transparent;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: var(--btn-primary-color);
+    border-color: var(--btn-primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--btn-primary-hover);
+    border-color: var(--btn-primary-hover);
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: var(--btn-secondary-color);
+    border-color: var(--btn-secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--btn-secondary-hover);
+    border-color: var(--btn-secondary-hover);
+}
+
+.btn-success {
+    color: #fff;
+    background-color: var(--btn-success-color);
+    border-color: var(--btn-success-color);
+}
+
+.btn-success:hover {
+    background-color: var(--btn-success-hover);
+    border-color: var(--btn-success-hover);
 }
 
 .btn-outline-success {
-    color: #ffffff;
-    border-color: #0d6efd;
+    color: var(--btn-outline-success-color);
+    border-color: var(--btn-outline-success-border);
 }
 
 .btn-outline-success:hover {
-    background-color: #0d6efd;
-    color: #ffffff;
+    background-color: var(--btn-outline-success-hover-bg); /* Usando la nueva variable para el fondo */
+    color: var(--btn-outline-success-hover-color); /* Usando la nueva variable para el texto */
+    border-color: var(--btn-outline-success-border); /* Mantenemos el mismo color de borde */
 }
 
+
 main {
-    padding: 2rem 0;
+    padding: var(--global-padding) 0;
 }
 
 h1 {
-    color: #ffffff;
+    color: var(--brand-color);
     margin-bottom: 1rem;
 }
 
 p {
-    color: #eeeeee;
+    color: var(--text-color);
     line-height: 1.7;
 }
 
@@ -103,3 +195,28 @@ p {
     max-width: 1200px;
     margin: 0 auto;
 }
+
+.alert-info {
+    background-color: var(--alert-info-bg);
+    padding: var(--alert-padding-y) var(--alert-padding-x);
+    margin-bottom: var(--alert-margin-bottom);
+    color: var(--alert-info-text);
+    border: var(--border-width) solid var(--alert-info-border);
+    border-radius: var(--border-radius);
+}
+
+.alert-info hr {
+    border-top-color: var(--alert-info-border);
+}
+
+.alert-info .alert-link {
+    color: var(--alert-info-link);
+    font-weight: bold;
+}
+
+.alert-info .alert-link:hover,
+.alert-info .alert-link:focus {
+    color: var(--alert-info-link);
+    text-decoration: underline;
+}
+    

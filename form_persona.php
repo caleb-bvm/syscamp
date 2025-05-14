@@ -195,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit" class="btn btn-primary w-100">Guardar Persona</button>
     </form>
 </div>
-
+<br><br><br><br><br><br>
 
 <?php
 include_once('footer.php');?>
