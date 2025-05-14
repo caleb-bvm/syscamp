@@ -56,10 +56,9 @@ if (!isset($_SESSION['username'])) {
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
-                    </form>
+                    <a class="navbar-brand ms-auto" href="#">
+                    <img src="imagen_ministerio.jpg" alt="Ministerio" height="80">
+                    </a>
                 </div>
             </div>
         </nav>
