@@ -40,7 +40,7 @@ if (!isset($_SESSION['username'])) {
                             <a class="nav-link" href="listar_preguntas.php">Preguntas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="insertar_pregunta.php">Insertar Pregunta</>
+                            <a class="nav-link" href="insertar_pregunta.php">Insertar Pregunta</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="reportes.php">Reportes</a>

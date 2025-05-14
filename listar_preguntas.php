@@ -15,7 +15,7 @@ if (!$resultado) {
 <div class="container mt-5">
     <h2>Listado de Preguntas</h2>
 
-    <a href="insertar_pregunta.php" class="btn btn-success mb-3">Insertar Nueva Pregunta</a>
+    <a href="insertar_pregunta.php" class="btn btn-primary mb-3">Insertar Nueva Pregunta</a>
 
     <table class="table table-bordered">
         <thead class="table-dark">
