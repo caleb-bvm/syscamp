@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Formulario de Registro de Persona</h2>
+    <h2 class="text-center mb-4">📄 Formulario de Registro de Persona</h2><br>
 
     <?php if (!empty($mensaje)): ?>
         <div class="alert alert-dark text-center">
@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     <form method="post" class="card p-4 shadow-sm">
+        <h3 class="mt-4 mb-3">Datos del Gestor</h3>
         <div class="mb-3">
             <label class="form-label">Código Persona</label>
             <input type="text" class="form-control" name="codigo_persona" required>

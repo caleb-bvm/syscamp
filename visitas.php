@@ -87,7 +87,7 @@ $resultado_preguntas = pg_query($conexion, $query_preguntas);
 $preguntas = pg_fetch_all($resultado_preguntas);
 ?>
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Formulario de visitas</h2>
+    <h2 class="text-center mb-4">📄 Formulario de visitas</h2><br>
 
     <?php if (!empty($mensaje)) : ?>
         <div class="alert alert-info text-center">
