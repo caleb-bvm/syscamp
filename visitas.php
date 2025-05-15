@@ -251,7 +251,6 @@ $preguntas = pg_fetch_all($resultado_preguntas);
                 const municipioSelect = document.getElementById('municipio');
                 const distritoSelect = document.getElementById('distrito');
                 const centroEducativoSelect = document.getElementById('centro_educativo'); // Obtener el nuevo select
-=======
         <button type="submit" class="btn btn-primary w-100 mt-4">Guardar Persona</button>
     </form>
 </div>
