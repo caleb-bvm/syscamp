@@ -59,28 +59,11 @@ if (!isset($_SESSION['username'])) {
                         </li>
                     </ul>
                     <a class="navbar-brand ms-auto" href="#">
-                    <img src="imagen_ministerio.jpg" alt="Ministerio" height="80">
+                    <img src="mined.png" alt="Ministerio" height="80">
                     </a>
                 </div>
             </div>
         </nav>
     </header>
 
-    <?php if (basename($_SERVER['PHP_SELF']) == 'home.php'): ?>
-    <div class="container mt-5">
-        <div class="p-5 mb-4 rounded-3 shadow" style="background-color: #222222; border-left: 6px solid #0d6efd;">
-            <div class="container-fluid py-3 text-center">
-                <h1 class="display-5 fw-bold" style="color: var(--brand-color);">
-                    Bienvenido/a a <span style="color: #0d6efd;">SYSCAMP</span>
-                </h1>
-                <p class="fs-5" style="color: var(--text-color);">
-                    Plataforma de gestión para visitas, centros educativos y supervisión de gestores. Optimiza tu trabajo desde un solo lugar.
-                </p>
-            </div>
-        </div>
-    </div>
-    <?php endif; ?>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-VB6QZz3D1cWbO4gK6wr2eIRldmQ58U8yHO2UlS1h5i5gG4CWzX8SIk3z4Me/8eUu" crossorigin="anonymous"></script>
-</body>
-</html>
