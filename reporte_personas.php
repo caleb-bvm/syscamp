@@ -83,8 +83,8 @@ $resultado = pg_query($conexion, $query);
         </div>
 
         <div class="col-12 text-end">
-            <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
-            <a href="generar_pdf_personas.php?filtro_rol=<?=$filtro_rol?>&filtro_distrito=<?=$filtro_distrito?>&filtro_departamento=<?=$filtro_departamento?>" class="btn btn-danger" target="_blank">📄 Exportar PDF</a>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Aplicar Filtros</button>
+            <a href="generar_pdf_personas.php?filtro_rol=<?=$filtro_rol?>&filtro_distrito=<?=$filtro_distrito?>&filtro_departamento=<?=$filtro_departamento?>" class="btn btn-danger" target="_blank"><i class="bi bi-file-earmark-pdf"></i> Exportar PDF</a>
         </div>
     </form>
 

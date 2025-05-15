@@ -35,14 +35,6 @@ $query = "
 $resultado = pg_query($conexion, $query);
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>📋 Reporte de Visitas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
 <div class="container mt-4">
     <h2>📋 Reporte de Visitas</h2>
 
@@ -64,12 +56,12 @@ $resultado = pg_query($conexion, $query);
             <input type="text" name="username" value="<?= htmlspecialchars($username) ?>" class="form-control" placeholder="Username">
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary w-100">Buscar</button>
+            <button type="submit" class="btn btn-primary w-100"><i class="bi bi-search"></i> Buscar</button>
         </div>
     </form>
 
     <div class="mb-3">
-        <a href="exportar_visitas_pdf.php?<?= http_build_query($_GET) ?>" class="btn btn-danger">📄 Exportar PDF</a>
+        <a href="exportar_visitas_pdf.php?<?= http_build_query($_GET) ?>" class="btn btn-danger"><i class="bi bi-file-earmark-pdf"></i> Exportar PDF</a>
     </div>
 
     <!-- Tabla de resultados -->
@@ -110,7 +102,5 @@ $resultado = pg_query($conexion, $query);
         </table>
     </div>
 </div>
-</body>
-</html>
 
 <?php include_once('footer.php'); ?>

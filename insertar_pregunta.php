@@ -44,11 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <option value="2.3 Mediación pedagógica">2.3 Mediación pedagógica</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">✔️ Guardar Pregunta</button>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Guardar Pregunta</button>
         </form>
     </div>
     <br>
-    <a href="listar_preguntas.php" class="btn btn-secondary">⬅️ Volver a la lista de preguntas</a>
+    <a href="listar_preguntas.php" class="btn btn-secondary"><i class="bi bi-box-arrow-left"></i> Volver a la lista de preguntas</a>
 </div>
 
 <?php include_once('footer.php'); ?>

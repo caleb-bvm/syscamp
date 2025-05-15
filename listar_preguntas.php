@@ -19,7 +19,7 @@ if (!$resultado) {
 <?php endif; ?>
 
 
-    <a href="insertar_pregunta.php" class="btn btn-primary mb-3">➕ Insertar Nueva Pregunta</a>
+    <a href="insertar_pregunta.php" class="btn btn-primary mb-3"><i class="bi bi-plus-circle">  </i>Insertar Nueva Pregunta</a>
 
     <table class="table table-bordered">
         <thead class="table-dark">
