@@ -1,98 +1,82 @@
 <?php
-// 1. Incluir la librería FPDF
 require('fpdf186/fpdf.php');
-
-// 2. Incluir la conexión a la base de datos
 include_once('configuracion/conexion.php');
 
-// 3. Capturar los filtros desde la URL
-$categoria = $_GET['categoria'] ?? '';
-$grado     = $_GET['grado'] ?? '';
-$turno     = $_GET['turno'] ?? '';
-$fecha     = $_GET['fecha'] ?? '';
+// Captura de filtros
+$institucion = $_GET['institucion'] ?? '';
+$grado       = $_GET['grado'] ?? '';
+$turno       = $_GET['turno'] ?? '';
+$fecha       = $_GET['fecha'] ?? '';
+$username    = $_GET['username'] ?? '';
 
-// 4. Construir condiciones dinámicamente
+// Condiciones dinámicas
 $condiciones = [];
-if (!empty($categoria)) {
-    $condiciones[] = "p.categoria ILIKE '%$categoria%'";
-}
-if (!empty($grado)) {
-    $condiciones[] = "r.grado ILIKE '%$grado%'";
-}
-if (!empty($turno)) {
-    $condiciones[] = "r.turno ILIKE '%$turno%'";
-}
-if (!empty($fecha)) {
-    $condiciones[] = "r.fecha = '$fecha'";
-}
+if (!empty($institucion)) $condiciones[] = "i.nombre_institucion ILIKE '%$institucion%'";
+if (!empty($grado))       $condiciones[] = "r.grado ILIKE '%$grado%'";
+if (!empty($turno))       $condiciones[] = "r.turno ILIKE '%$turno%'";
+if (!empty($fecha))       $condiciones[] = "r.fecha = '$fecha'";
+if (!empty($username))    $condiciones[] = "per.username ILIKE '%$username%'";
+
 $where = count($condiciones) > 0 ? "WHERE " . implode(" AND ", $condiciones) : "";
 
-// 5. Consulta SQL
+// Consulta
 $query = "
     SELECT r.cod_respuesta, i.nombre_institucion, r.grado, r.turno, r.fecha, 
-           p.categoria, p.pregunta, rd.respuesta, rd.comentario
+           p.categoria, p.pregunta, rd.respuesta, rd.comentario,
+           per.username
     FROM respuestas r
     JOIN respuestas_detalladas rd ON r.cod_respuesta = rd.respuestas_cod_respuesta
     JOIN preguntas p ON rd.cod_pregunta = p.cod_pregunta
     JOIN institucion i ON r.id_institucion = i.id_institucion
+    JOIN persona per ON id_persona = id_persona
     $where
     ORDER BY r.fecha DESC, p.categoria, p.cod_pregunta
 ";
 $resultado = pg_query($conexion, $query);
 
-// 6. Crear PDF
-$pdf = new FPDF('L', 'mm', 'A4');
-$pdf->AddPage();
-
-// 7. Título
-$pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(0, 10, utf8_decode('Reporte General de Visitas a Instituciones Educativas'), 0, 1, 'C');
-$pdf->Ln(5);
-
-// 8. Encabezados
-$pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(40, 10, 'Institución', 1);
-$pdf->Cell(20, 10, 'Grado', 1);
-$pdf->Cell(20, 10, 'Turno', 1);
-$pdf->Cell(25, 10, 'Fecha', 1);
-$pdf->Cell(30, 10, 'Categoría', 1);
-$pdf->Cell(60, 10, 'Pregunta', 1);
-$pdf->Cell(30, 10, 'Respuesta', 1);
-$pdf->Cell(50, 10, 'Comentario', 1);
-$pdf->Ln();
-
-// 9. Datos
-$pdf->SetFont('Arial', '', 9);
-while ($fila = pg_fetch_assoc($resultado)) {
-    $pdf->Cell(40, 10, utf8_decode($fila['nombre_institucion']), 1);
-    $pdf->Cell(20, 10, utf8_decode($fila['grado']), 1);
-    $pdf->Cell(20, 10, utf8_decode($fila['turno']), 1);
-    $pdf->Cell(25, 10, $fila['fecha'], 1);
-    $pdf->Cell(30, 10, utf8_decode($fila['categoria']), 1);
-
-    // Controlar alturas con MultiCell
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
-
-    // Guardar texto
-    $pregunta  = utf8_decode($fila['pregunta']);
-    $respuesta = utf8_decode($fila['respuesta']);
-    $comentario = utf8_decode($fila['comentario']);
-
-    // Dibujar la MultiCell de Pregunta y calcular altura
-    $pdf->MultiCell(60, 10, $pregunta, 1, 'L');
-    $altura = $pdf->GetY() - $y;
-
-    // Volver a posición para celdas siguientes
-    $pdf->SetXY($x + 60, $y);
-    $pdf->MultiCell(30, $altura, $respuesta, 1);
-    $pdf->SetXY($x + 90, $y);
-    $pdf->MultiCell(50, $altura, $comentario, 1);
-
-    // Ajustar Y para siguiente fila
-    $pdf->SetY($y + $altura);
+if (!$resultado) {
+    die("Error al ejecutar la consulta: " . pg_last_error($conexion));
 }
 
-// 10. Exportar PDF
-$pdf->Output('reporte_visitas.pdf', 'D'); // Forzar descarga
+// Crear PDF
+$pdf = new FPDF('L', 'mm', 'A4');
+$pdf->SetMargins(5, 10, 5);
+$pdf->AddPage();
+$pdf->SetFont('Arial', 'B', 14);
+$pdf->Cell(0, 10, utf8_decode('📋 Reporte de Visitas a Instituciones'), 0, 1, 'C');
+$pdf->Ln(3);
+
+// Encabezado
+$pdf->SetFont('Arial', 'B', 9);
+$pdf->SetFillColor(60, 120, 180);
+$pdf->SetTextColor(255);
+
+$headers = ['Usuario', 'Institución', 'Grado', 'Turno', 'Fecha', 'Categoría', 'Pregunta', 'Respuesta', 'Comentario'];
+$widths  = [25, 40, 20, 20, 25, 30, 60, 25, 40];
+
+foreach ($headers as $i => $col) {
+    $pdf->Cell($widths[$i], 7, utf8_decode($col), 1, 0, 'C', true);
+}
+$pdf->Ln();
+
+// Contenido
+$pdf->SetFont('Arial', '', 8);
+$pdf->SetTextColor(0);
+$line_height = 5;
+
+while ($fila = pg_fetch_assoc($resultado)) {
+    $pdf->Cell($widths[0], $line_height, utf8_decode($fila['username']), 1);
+    $pdf->Cell($widths[1], $line_height, utf8_decode($fila['nombre_institucion']), 1);
+    $pdf->Cell($widths[2], $line_height, utf8_decode($fila['grado']), 1);
+    $pdf->Cell($widths[3], $line_height, utf8_decode($fila['turno']), 1);
+    $pdf->Cell($widths[4], $line_height, utf8_decode($fila['fecha']), 1);
+    $pdf->Cell($widths[5], $line_height, utf8_decode($fila['categoria']), 1);
+    $pdf->Cell($widths[6], $line_height, utf8_decode(substr($fila['pregunta'], 0, 40)) . '...', 1);
+    $pdf->Cell($widths[7], $line_height, utf8_decode($fila['respuesta']), 1);
+    $pdf->Cell($widths[8], $line_height, utf8_decode(substr($fila['comentario'], 0, 40)) . '...', 1);
+    $pdf->Ln();
+}
+
+$pdf->Output('D', 'reporte_visitas.pdf');
+pg_close($conexion);
 ?>
