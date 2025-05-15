@@ -13,7 +13,7 @@ if (!$resultado) {
 ?>
 
 <div class="container mt-5">
-    <h2>Listado de Preguntas</h2>
+    <h2>Listado de Preguntas</h2><br>
     <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminada'): ?>
     <div class="alert alert-success">Pregunta eliminada correctamente.</div>
 <?php endif; ?>
