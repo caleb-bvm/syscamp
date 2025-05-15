@@ -31,41 +31,7 @@ $query = "
 $resultado = pg_query($conexion, $query);
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>📋 Reporte de Visitas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f4f6f9;
-        }
 
-        .card-filtros {
-            border-radius: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .table th, .table td {
-            vertical-align: middle;
-        }
-
-        .table thead {
-            background-color: #0d6efd;
-            color: white;
-        }
-
-        .btn-exportar {
-            font-size: 1rem;
-        }
-
-        h2 {
-            font-weight: 600;
-        }
-    </style>
-</head>
-<body>
     <div class="container py-5">
         <h2 class="text-center mb-4">📋 Reporte de Visitas</h2>
 
@@ -135,6 +101,5 @@ $resultado = pg_query($conexion, $query);
             </table>
         </div>
     </div>
-</body>
-</html>
+
 <?php include_once('footer.php'); ?>
