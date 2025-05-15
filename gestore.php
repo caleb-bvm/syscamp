@@ -1,4 +1,4 @@
-<div?php
+<?php
 include("configuracion/conexion.php");
 
 // Procesar envío del formulario
@@ -84,7 +84,7 @@ include_once("header.php");
                     ?>
                 </select>
 </div>
-            </div>
+            </>
 
             <button type="submit" class="btn btn-primary w-100">Guardar Usuario</button>
         </form>

@@ -1,31 +1,35 @@
 <?php
+$mensaje = "";
 session_start();
-include ('configuracion/conexion.php');
+include('configuracion/conexion.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM usuarios WHERE username = '$username'";
+    // Consulta para seleccionar los campos necesarios de la tabla persona
+    $query = "SELECT id_persona, username, clave_persona, id_rol, nombre_persona 
+              FROM persona 
+              WHERE username = '$username'";
     $resultado = pg_query($conexion, $query);
     if ($resultado && pg_num_rows($resultado) == 1) {
         $usuario = pg_fetch_assoc($resultado);
-        if ($usuario['password_hash'] === $password) {
-            $_SESSION['id'] = $usuario['id'];
+        // Verificar la contraseña usando el campo clave_persona
+        if ($usuario['clave_persona'] === $password) {
+            $_SESSION['id_persona'] = $usuario['id_persona'];  // Guardar id_persona
             $_SESSION['username'] = $usuario['username'];
-            $_SESSION['rol_id'] = $usuario['rol_id'];
-            $_SESSION['nombres'] = $usuario['nombres'];
+            $_SESSION['id_rol'] = $usuario['id_rol'];
+            $_SESSION['nombre_persona'] = $usuario['nombre_persona'];
 
-            
             header("Location: index.php");
             exit();
         } else {
             $mensaje = "Contraseña incorrecta.";
         }
+    } else {
+        $mensaje = "Usuario no encontrado.";
     }
-
-}   
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -53,8 +57,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" name="password" required>
             </div>
-
-            <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+            <br>
+            <button type="submit" class="btn btn-primary w-100" style="height:45px">Ingresar</button>
+            <br>
+            <div class="text-center my-2">——— o inicia sesión con ———</div>
+            <br>
+            <button type="submit" class="btn btn-light w-100">
+                <img src="google-brands.svg" alt="Google Icon" style="margin-right: 8px; height: 30px;">
+            </button>
+            <br>
         </form>
     </div>
 </body>

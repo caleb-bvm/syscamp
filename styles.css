@@ -33,6 +33,9 @@
     --alert-info-text: #dddddd;
     --alert-info-border: #444444;
     --alert-info-link: #ffffff;
+    /* Nuevo para iframe */
+    --iframe-margin: 0 auto; /* Centrar horizontalmente */
+    --iframe-display: block;
 
     /* Espaciado */
     --global-padding: 2rem;
@@ -176,6 +179,13 @@ header {
     border-color: var(--btn-outline-success-border); /* Mantenemos el mismo color de borde */
 }
 
+/* Nuevo estilo para centrar el iframe */
+iframe {
+    margin: var(--iframe-margin);  /* Centrar horizontalmente el iframe */
+    display: var(--iframe-display); /* Establecer el display a block */
+    max-width: 100%; /* Opcional: Para que el iframe no se desborde en contenedores pequeños */
+}
+
 
 main {
     padding: var(--global-padding) 0;
@@ -219,4 +229,3 @@ p {
     color: var(--alert-info-link);
     text-decoration: underline;
 }
-    
