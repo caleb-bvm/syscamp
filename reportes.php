@@ -17,6 +17,9 @@
             <a href="reporte_personas.php" class="list-group-item list-group-item-action">
                 👤 Reporte de Personas
             </a>
+            <a href="reporte_visitas.php" class="list-group-item list-group-item-action">
+                📋 Reporte de Visitas
+            </a>
             <a href="reporte_instituciones.php" class="list-group-item list-group-item-action">
                 🏫 Reporte de Instituciones
             </a>
