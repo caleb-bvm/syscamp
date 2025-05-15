@@ -19,7 +19,7 @@ if (!$resultado) {
 <?php endif; ?>
 
 
-    <a href="insertar_pregunta.php" class="btn btn-primary mb-3">Insertar Nueva Pregunta</a>
+    <a href="insertar_pregunta.php" class="btn btn-primary mb-3">➕ Insertar Nueva Pregunta</a>
 
     <table class="table table-bordered">
         <thead class="table-dark">
@@ -38,7 +38,7 @@ if (!$resultado) {
                 <td><?php echo htmlspecialchars($fila['pregunta']); ?></td>
                 <td><?php echo $fila['categoria']; ?></td>
                 <td>
-                    <a href="editar_pregunta.php?id=<?php echo $fila['cod_pregunta']; ?>" class="btn btn-primary btn-sm" style="width: 120px;">Editar</a><br>
+                    <a href="editar_pregunta.php?id=<?php echo $fila['cod_pregunta']; ?>" class="btn btn-primary btn-sm" style="width: 120px;">Editar</a><br><hr>
                     <a href="eliminar_pregunta.php?id=<?php echo $fila['cod_pregunta']; ?>" class="btn btn-danger btn-sm" style="width: 120px;" onclick="return confirm('¿Estás seguro de que deseas eliminar esta pregunta?');">Eliminar</a>
                 </td>
             </tr>

@@ -1,107 +1,145 @@
-/* styles.css */
+/* styles.css - Inspirado en Material You */
 
 :root {
-    /* Colores principales */
-    --body-bg: #1a1a1a;
-    --text-color: #f0f0f0;
-    --header-bg: #222222;
-    --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    --brand-color: #ffffff;
-    --nav-link-color: #cccccc;
-    --nav-link-hover: #ffffff;
-    --active-nav-link: #ffffff;
-    --dropdown-bg: #333333;
-    --dropdown-border: #444444;
-    --dropdown-item-color: #dddddd;
-    --dropdown-item-hover: #444444;
-    --dropdown-divider-color: #444444;
-    --form-control-bg: #ffffff;
-    --form-control-border: #dee2e6;
-    --form-control-text: #eeeeee;
-    --form-control-placeholder: #aaaaaa;
-    --btn-primary-color: #007bff; /* Azul de Bootstrap */
-    --btn-primary-hover: #0056b3;
-    --btn-secondary-color: #6c757d; /* Gris de Bootstrap */
-    --btn-secondary-hover: #545b62;
-    --btn-success-color: #28a745; /* Verde de Bootstrap */
-    --btn-success-hover: #218838;
-    --btn-outline-success-color: #ffffff;
-    --btn-outline-success-border: #0d6efd;
-    --btn-outline-success-hover-bg: #0d6efd; /* Nuevo: color de fondo para hover */
-    --btn-outline-success-hover-color: #ffffff; /* Nuevo: color de texto para hover */
-    --alert-info-bg: #333333;
-    --alert-info-text: #dddddd;
-    --alert-info-border: #444444;
-    --alert-info-link: #ffffff;
+    /* Colores principales - Adaptados a Material You (Dark Theme) */
+    --body-bg: #1C1B1F; /* Un gris oscuro profundo */
+    --text-color: #E6E1E5; /* Texto principal claro */
+    --header-bg: #2B2930; /* Un tono ligeramente más oscuro para el encabezado */
+    --header-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada pero suave */
+
+    /* Colores de marca y navegación - Adaptados a Material You */
+    --brand-color: #D0BCFF; /* Un púrpura suave y vibrante como color de acento */
+    --nav-link-color: #CAC4D0; /* Gris claro para enlaces normales */
+    --nav-link-hover: #E8DEF8; /* Púrpura muy claro para hover */
+    --active-nav-link: #E8DEF8; /* Púrpura muy claro para enlace activo */
+
+    /* Dropdown - Material You */
+    --dropdown-bg: #36343B; /* Fondo de dropdown más oscuro */
+    --dropdown-border: #4D4853; /* Borde sutil */
+    --dropdown-item-color: #E6E1E5;
+    --dropdown-item-hover: #4D4853; /* Fondo de hover más oscuro y distintivo */
+    --dropdown-divider-color: #4D4853;
+
+    /* Controles de formulario - Material You */
+    --form-control-bg: #36343B; /* Fondo de inputs oscuro */
+    --form-control-border: #8E889C; /* Borde más claro para visibilidad */
+    --form-control-text: #E6E1E5;
+    --form-control-placeholder: #CAC4D0;
+
+    /* Botones - Material You (usando tonos de acento) */
+    --btn-primary-color: #D0BCFF; /* Púrpura de acento */
+    --btn-primary-hover: #B69DF8; /* Púrpura ligeramente más oscuro para hover */
+    --btn-primary-text-color: #381E72; /* Texto oscuro para el botón principal */
+
+    --btn-secondary-color: #4D4853; /* Gris oscuro para secundario */
+    --btn-secondary-hover: #605D68; /* Gris ligeramente más claro para hover */
+    --btn-secondary-text-color: #E6E1E5; /* Texto claro para el botón secundario */
+
+    --btn-success-color: #8BC34A; /* Verde suave para éxito */
+    --btn-success-hover: #7CB342; /* Verde ligeramente más oscuro */
+    --btn-success-text-color: #FFFFFF; /* Texto blanco para el botón de éxito */
+
+    --btn-outline-success-color: #D0BCFF; /* Color de texto del borde */
+    --btn-outline-success-border: #D0BCFF; /* Color del borde */
+    --btn-outline-success-hover-bg: #D0BCFF;
+    --btn-outline-success-hover-color: #381E72; /* Color de texto oscuro para hover */
+
+    /* Alertas - Material You */
+    --alert-info-bg: #3F3C46; /* Fondo de alerta más oscuro */
+    --alert-info-text: #E6E1E5;
+    --alert-info-border: #6F6C7D; /* Borde de alerta más claro */
+    --alert-info-link: #D0BCFF; /* Enlace de alerta con color de acento */
+
     /* Nuevo para iframe */
-    --iframe-margin: 0 auto; /* Centrar horizontalmente */
+    --iframe-margin: 0 auto;
     --iframe-display: block;
 
     /* Espaciado */
-    --global-padding: 2rem;
-    --alert-padding-x: 1rem;
+    --global-padding: 1.5rem; /* Ajuste para un espaciado más moderno */
+    --alert-padding-x: 1.25rem;
     --alert-padding-y: 1rem;
-    --alert-margin-bottom: 1rem;
+    --alert-margin-bottom: 1.25rem;
 
-    /* Bordes */
-    --border-radius: 0.375rem;
+    /* Bordes - Material You (más redondeados) */
+    --border-radius: 0.75rem; /* Bordes más redondeados para todos los elementos */
     --border-width: 1px;
-    --border-radius-lg: 0.5rem;
+    --border-radius-lg: 1.25rem; /* Para elementos grandes */
 }
 
 body {
     background-color: var(--body-bg);
     color: var(--text-color);
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Usamos Roboto si está disponible, sino Arial */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 header {
     background-color: var(--header-bg);
     padding: var(--global-padding) 0;
     box-shadow: var(--header-shadow);
+    position: sticky; /* Sticky header para una mejor experiencia */
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar-brand {
     color: var(--brand-color);
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.8rem; /* Tamaño de fuente ligeramente más grande */
+    font-weight: 700; /* Más audaz */
 }
 
 .navbar-nav .nav-link {
     color: var(--nav-link-color);
-    margin-right: 1rem;
+    margin-right: 1.25rem; /* Más espacio entre enlaces */
+    font-weight: 500;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    border-radius: var(--border-radius); /* Bordes redondeados para los enlaces */
+    padding: 0.5rem 0.75rem; /* Relleno para que se vean como "chips" */
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
     color: var(--nav-link-hover);
+    background-color: rgba(var(--nav-link-hover), 0.1); /* Fondo sutil al hacer hover */
 }
 
-.navbar-nav .nav-item.active .nav-link {
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item .nav-link.active { /* Aseguramos que la clase 'active' funcione */
     color: var(--active-nav-link);
-    font-weight: bold;
+    font-weight: 600;
+    background-color: rgba(var(--active-nav-link), 0.2); /* Fondo más pronunciado para activo */
 }
 
 .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(var(--nav-link-color), 0.3);
+    border-radius: var(--border-radius); /* Bordes redondeados */
+    padding: 0.5rem 0.75rem;
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'%3e%3c/path%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23CAC4D0' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'%3e%3c/path%3e%3c/svg%3e"); /* Icono blanco/claro */
 }
 
 .navbar-toggler:hover,
 .navbar-toggler:focus {
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: var(--brand-color); /* Borde de acento al hacer hover */
+    box-shadow: 0 0 0 0.25rem rgba(var(--brand-color), 0.25); /* Sombra de enfoque */
 }
 
 .dropdown-menu {
     background-color: var(--dropdown-bg);
-    border-color: var(--dropdown-border);
+    border: var(--border-width) solid var(--dropdown-border);
+    border-radius: var(--border-radius-lg); /* Más redondeado para el dropdown */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 .dropdown-item {
     color: var(--dropdown-item-color);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--border-radius); /* Bordes redondeados para items */
+    margin: 0.25rem 0.5rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .dropdown-item:hover,
@@ -112,31 +150,42 @@ header {
 
 .dropdown-divider {
     border-top-color: var(--dropdown-divider-color);
+    margin: 0.5rem 0;
 }
 
 .form-control {
     background-color: var(--form-control-bg);
-    border-color: var(--form-control-border);
+    border: var(--border-width) solid var(--form-control-border);
+    color: var(--form-control-text);
+    border-radius: var(--border-radius); /* Redondeado */
+    padding: 0.75rem 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--brand-color); /* Borde de acento al enfocar */
+    box-shadow: 0 0 0 0.2rem rgba(var(--brand-color), 0.25);
+    background-color: var(--form-control-bg); /* Mantiene el mismo fondo */
     color: var(--form-control-text);
 }
 
 .form-control::placeholder {
     color: var(--form-control-placeholder);
+    opacity: 0.7; /* Ligeramente más transparente */
 }
 
 .btn {
-    border-radius: var(--border-radius);
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+    border-radius: var(--border-radius-lg); /* Botones más redondeados */
+    padding: 0.85rem 1.75rem; /* Más padding para un look más grande */
+    font-size: 1.05rem; /* Tamaño de fuente ligeramente más grande */
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     border: var(--border-width) solid transparent;
 }
 
-
 .btn-primary {
-    color: #fff;
+    color: var(--btn-primary-text-color);
     background-color: var(--btn-primary-color);
     border-color: var(--btn-primary-color);
 }
@@ -144,10 +193,11 @@ header {
 .btn-primary:hover {
     background-color: var(--btn-primary-hover);
     border-color: var(--btn-primary-hover);
+    box-shadow: 0 4px 8px rgba(var(--btn-primary-color), 0.3); /* Sombra al hacer hover */
 }
 
 .btn-secondary {
-    color: #fff;
+    color: var(--btn-secondary-text-color);
     background-color: var(--btn-secondary-color);
     border-color: var(--btn-secondary-color);
 }
@@ -155,10 +205,11 @@ header {
 .btn-secondary:hover {
     background-color: var(--btn-secondary-hover);
     border-color: var(--btn-secondary-hover);
+    box-shadow: 0 4px 8px rgba(var(--btn-secondary-color), 0.3);
 }
 
 .btn-success {
-    color: #fff;
+    color: var(--btn-success-text-color);
     background-color: var(--btn-success-color);
     border-color: var(--btn-success-color);
 }
@@ -166,26 +217,31 @@ header {
 .btn-success:hover {
     background-color: var(--btn-success-hover);
     border-color: var(--btn-success-hover);
+    box-shadow: 0 4px 8px rgba(var(--btn-success-color), 0.3);
 }
 
 .btn-outline-success {
     color: var(--btn-outline-success-color);
     border-color: var(--btn-outline-success-border);
+    background-color: transparent; /* Aseguramos que sea transparente por defecto */
 }
 
 .btn-outline-success:hover {
-    background-color: var(--btn-outline-success-hover-bg); /* Usando la nueva variable para el fondo */
-    color: var(--btn-outline-success-hover-color); /* Usando la nueva variable para el texto */
-    border-color: var(--btn-outline-success-border); /* Mantenemos el mismo color de borde */
+    background-color: var(--btn-outline-success-hover-bg);
+    color: var(--btn-outline-success-hover-color);
+    border-color: var(--btn-outline-success-hover-bg); /* El borde también cambia con el fondo */
+    box-shadow: 0 4px 8px rgba(var(--btn-outline-success-hover-bg), 0.3);
 }
 
-/* Nuevo estilo para centrar el iframe */
+/* Estilo para centrar el iframe */
 iframe {
-    margin: var(--iframe-margin);  /* Centrar horizontalmente el iframe */
-    display: var(--iframe-display); /* Establecer el display a block */
-    max-width: 100%; /* Opcional: Para que el iframe no se desborde en contenedores pequeños */
+    margin: var(--iframe-margin);
+    display: var(--iframe-display);
+    max-width: 100%;
+    border-radius: var(--border-radius-lg); /* Bordes redondeados para el iframe */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Sombra para el iframe */
+    border: none; /* Quitamos el borde por defecto */
 }
-
 
 main {
     padding: var(--global-padding) 0;
@@ -193,17 +249,21 @@ main {
 
 h1 {
     color: var(--brand-color);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem; /* Tamaño de fuente más grande para títulos */
+    font-weight: 700;
 }
 
 p {
     color: var(--text-color);
-    line-height: 1.7;
+    line-height: 1.8; /* Mayor altura de línea para legibilidad */
+    font-size: 1.05rem;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 var(--global-padding); /* Añadir padding horizontal al contenedor */
 }
 
 .alert-info {
@@ -212,7 +272,8 @@ p {
     margin-bottom: var(--alert-margin-bottom);
     color: var(--alert-info-text);
     border: var(--border-width) solid var(--alert-info-border);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-lg); /* Alertas más redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .alert-info hr {
@@ -221,11 +282,17 @@ p {
 
 .alert-info .alert-link {
     color: var(--alert-info-link);
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .alert-info .alert-link:hover,
 .alert-info .alert-link:focus {
     color: var(--alert-info-link);
     text-decoration: underline;
+}
+
+.report-icon {
+font-size: 2.5rem;
+color: #D0BCFF;
+margin-right: 0.5rem;
 }

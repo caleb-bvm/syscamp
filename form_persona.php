@@ -195,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" class="form-control" name="username" required>
         </div>
 
-        <button type="submit" class="btn btn-primary w-100">Guardar Persona</button>
+        <button type="submit" class="btn btn-primary w-100">Guardar Persona 👤</button>
     </form>
 </div>
 <br><br><br><br><br><br>

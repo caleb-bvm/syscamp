@@ -175,7 +175,7 @@ $preguntas = pg_fetch_all($resultado_preguntas);
             <div class="alert alert-warning text-center">No se encontraron preguntas en la base de datos.</div>
         <?php endif; ?>
 
-        <button type="submit" class="btn btn-primary w-100 mt-4">Guardar Persona</button>
+        <button type="submit" class="btn btn-primary w-100 mt-4">Guardar Visita ✔️</button>
     </form>
 </div>
 

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['id_rol'] = $usuario['id_rol'];
             $_SESSION['nombre_persona'] = $usuario['nombre_persona'];
 
-            header("Location: index.php");
+            header("Location: home.php");
             exit();
         } else {
             $mensaje = "Contraseña incorrecta.";

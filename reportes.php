@@ -1,37 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reportes</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f4f6f9;
-    }
 
-    .card-report {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card-report:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .report-icon {
-      font-size: 2.5rem;
-      color: #0d6efd;
-    }
-
-    .card-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-  </style>
-</head>
-<body>
   <?php include_once('header.php'); ?>
 
   <div class="container py-5">
@@ -97,5 +64,4 @@
   </div>
 
   <?php include_once('footer.php'); ?>
-</body>
-</html>
+

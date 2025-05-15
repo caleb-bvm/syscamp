@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <div class="container mt-5">
-    <h2>Insertar Nueva Pregunta</h2>
+    <h2>    Insertar Nueva Pregunta</h2>
     <?php if (isset($mensaje)): ?>
         <div class="alert <?php echo (strpos($mensaje, 'Error') === false) ? 'alert-success' : 'alert-danger'; ?>" role="alert">
             <?php echo $mensaje; ?>
@@ -42,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="2.3 Mediación pedagógica">2.3 Mediación pedagógica</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Guardar Pregunta</button>
+        <button type="submit" class="btn btn-primary">✔️ Guardar Pregunta</button>
     </form>
     <br>
-    <a href="listar_preguntas.php" class="btn btn-secondary">Volver a la lista de preguntas</a>
+    <a href="listar_preguntas.php" class="btn btn-secondary">⬅️ Volver a la lista de preguntas</a>
 </div>
 
 <?php include_once('footer.php'); ?>

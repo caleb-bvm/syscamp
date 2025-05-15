@@ -69,10 +69,10 @@ if ($cod_pregunta) {
                     <option value="2.3 Mediación pedagógica" <?php if ($pregunta_data['categoria'] === '2.3 Mediación pedagógica') echo 'selected'; ?>>2.3 Mediación pedagógica</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary">✔️ Guardar Cambios</button>
         </form>
         <br>
-        <a href="listar_preguntas.php" class="btn btn-secondary">Volver a la lista de preguntas</a>
+        <a href="listar_preguntas.php" class="btn btn-secondary">⬅️ Volver a la lista de preguntas</a>
     <?php endif; ?>
 </div>
 
