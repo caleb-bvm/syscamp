@@ -28,7 +28,7 @@ $query = "
     JOIN respuestas_detalladas rd ON r.cod_respuesta = rd.respuestas_cod_respuesta
     JOIN preguntas p ON rd.cod_pregunta = p.cod_pregunta
     JOIN institucion i ON r.id_institucion = i.id_institucion
-    JOIN persona per ON id_persona =id_persona
+    JOIN persona per ON id_persona = id_persona
     $where
     ORDER BY r.fecha DESC, p.categoria, p.cod_pregunta
 ";
@@ -36,7 +36,8 @@ $resultado = pg_query($conexion, $query);
 ?>
 
 <div class="container mt-4">
-    <h2>📋 Reporte de Visitas</h2>
+    <div class="card p-4">
+        <h2 class="text-center mb-4">📋 Reporte de Visitas</h2>
 
     <!-- Formulario de filtros -->
     <form method="GET" class="row g-2 mb-3">
