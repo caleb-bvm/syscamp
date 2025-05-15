@@ -37,47 +37,79 @@ $resultado = pg_query($conexion, $query);
     <meta charset="UTF-8">
     <title>📋 Reporte de Visitas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .card-filtros {
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .table thead {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .btn-exportar {
+            font-size: 1rem;
+        }
+
+        h2 {
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-4">
-        <h2>📋 Reporte de Visitas</h2>
+    <div class="container py-5">
+        <h2 class="text-center mb-4">📋 Reporte de Visitas</h2>
 
-        <!-- Formulario de filtros -->
-        <form method="GET" class="row g-2 mb-3">
-            <div class="col-md-3">
-                <input type="text" name="categoria" value="<?= htmlspecialchars($categoria) ?>" class="form-control" placeholder="Categoría">
-            </div>
-            <div class="col-md-2">
-                <input type="text" name="grado" value="<?= htmlspecialchars($grado) ?>" class="form-control" placeholder="Grado">
-            </div>
-            <div class="col-md-2">
-                <input type="text" name="turno" value="<?= htmlspecialchars($turno) ?>" class="form-control" placeholder="Turno">
-            </div>
-            <div class="col-md-3">
-                <input type="date" name="fecha" value="<?= htmlspecialchars($fecha) ?>" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary w-100">Buscar</button>
-            </div>
-        </form>
-
-        <div class="mb-3">
-            <a href="exportar_visitas_pdf.php?<?= http_build_query($_GET) ?>" class="btn btn-danger">📄 Exportar PDF</a>
+        <!-- Filtros -->
+        <div class="card card-filtros p-4 mb-4">
+            <form method="GET" class="row g-3">
+                <div class="col-md-3">
+                    <input type="text" name="categoria" value="<?= htmlspecialchars($categoria) ?>" class="form-control" placeholder="Categoría">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" name="grado" value="<?= htmlspecialchars($grado) ?>" class="form-control" placeholder="Grado">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" name="turno" value="<?= htmlspecialchars($turno) ?>" class="form-control" placeholder="Turno">
+                </div>
+                <div class="col-md-3">
+                    <input type="date" name="fecha" value="<?= htmlspecialchars($fecha) ?>" class="form-control">
+                </div>
+                <div class="col-md-2 d-grid">
+                    <button type="submit" class="btn btn-primary">🔍 Buscar</button>
+                </div>
+            </form>
         </div>
 
-        <!-- Tabla de resultados -->
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead class="table-dark">
+        <!-- Botón Exportar -->
+        <div class="d-flex justify-content-end mb-3">
+            <a href="exportar_visitas_pdf.php?<?= http_build_query($_GET) ?>" class="btn btn-danger btn-exportar">
+                📄 Exportar a PDF
+            </a>
+        </div>
+
+        <!-- Resultados -->
+        <div class="table-responsive shadow-sm rounded bg-white p-3">
+            <table class="table table-hover align-middle">
+                <thead>
                     <tr>
-                        <th>Institución</th>
-                        <th>Grado</th>
-                        <th>Turno</th>
-                        <th>Fecha</th>
-                        <th>Categoría</th>
-                        <th>Pregunta</th>
-                        <th>Respuesta</th>
-                        <th>Comentario</th>
+                        <th>🏫 Institución</th>
+                        <th>🎓 Grado</th>
+                        <th>🕐 Turno</th>
+                        <th>📅 Fecha</th>
+                        <th>📚 Categoría</th>
+                        <th>❓ Pregunta</th>
+                        <th>✅ Respuesta</th>
+                        <th>📝 Comentario</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,7 +127,9 @@ $resultado = pg_query($conexion, $query);
                             </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
-                        <tr><td colspan="8" class="text-center">No se encontraron resultados.</td></tr>
+                        <tr>
+                            <td colspan="8" class="text-center text-muted">No se encontraron resultados.</td>
+                        </tr>
                     <?php endif; ?>
                 </tbody>
             </table>
