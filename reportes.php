@@ -20,7 +20,10 @@
             <a href="reporte_instituciones.php" class="list-group-item list-group-item-action">
                 🏫 Reporte de Instituciones
             </a>
-            <!-- Agrega más enlaces aquí si creas más reportes -->
+            <a href="reporte_preguntas.php" class="list-group-item list-group-item-action">
+                ❓ Reporte de Preguntas
+            </a>
+
         </div>
     </div>
 
