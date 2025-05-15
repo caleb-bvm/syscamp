@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $usuario = pg_fetch_assoc($resultado);
         // Verificar la contraseña usando el campo clave_persona
         if ($usuario['clave_persona'] === $password) {
-            $_SESSION['id_persona'] = $usuario['id_persona'];
+            $_SESSION['id_persona'] = $usuario['id_persona'];  // Guardar id_persona
             $_SESSION['username'] = $usuario['username'];
             $_SESSION['id_rol'] = $usuario['id_rol'];
             $_SESSION['nombre_persona'] = $usuario['nombre_persona'];
@@ -30,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -68,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </button>
             <br>
         </form>
-    </div>
     </div>
 </body>
 </html>
