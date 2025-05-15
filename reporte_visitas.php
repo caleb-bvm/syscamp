@@ -41,73 +41,106 @@ $resultado = pg_query($conexion, $query);
     <meta charset="UTF-8">
     <title>📋 Reporte de Visitas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border-radius: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #004085;
+        }
+        .table thead {
+            background-color: #004085;
+            color: white;
+        }
+        .btn-export {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+    </style>
 </head>
 <body>
 <div class="container mt-4">
-    <h2>📋 Reporte de Visitas</h2>
+    <div class="card p-4">
+        <h2 class="text-center mb-4">📋 Reporte de Visitas</h2>
 
-    <!-- Formulario de filtros -->
-    <form method="GET" class="row g-2 mb-3">
-        <div class="col-md-3">
-            <input type="text" name="institucion" value="<?= htmlspecialchars($institucion) ?>" class="form-control" placeholder="Institución">
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="grado" value="<?= htmlspecialchars($grado) ?>" class="form-control" placeholder="Grado">
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="turno" value="<?= htmlspecialchars($turno) ?>" class="form-control" placeholder="Turno">
-        </div>
-        <div class="col-md-2">
-            <input type="date" name="fecha" value="<?= htmlspecialchars($fecha) ?>" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <input type="text" name="username" value="<?= htmlspecialchars($username) ?>" class="form-control" placeholder="Username">
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary w-100">Buscar</button>
-        </div>
-    </form>
+        <!-- Formulario de filtros -->
+        <form method="GET" class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">Institución</label>
+                <input type="text" name="institucion" value="<?= htmlspecialchars($institucion) ?>" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Grado</label>
+                <input type="text" name="grado" value="<?= htmlspecialchars($grado) ?>" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Turno</label>
+                <input type="text" name="turno" value="<?= htmlspecialchars($turno) ?>" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Fecha</label>
+                <input type="date" name="fecha" value="<?= htmlspecialchars($fecha) ?>" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" value="<?= htmlspecialchars($username) ?>" class="form-control">
+            </div>
+            <div class="col-12 d-grid">
+                <button type="submit" class="btn btn-primary">🔍 Buscar</button>
+            </div>
+        </form>
 
-    <div class="mb-3">
-        <a href="exportar_visitas_pdf.php?<?= http_build_query($_GET) ?>" class="btn btn-danger">📄 Exportar PDF</a>
-    </div>
+        <!-- Botón exportar -->
+        <div class="text-end mt-3">
+            <a href="exportar_visitas_pdf.php?<?= http_build_query($_GET) ?>" class="btn btn-danger btn-export">
+                📄 Exportar PDF
+            </a>
+        </div>
 
-    <!-- Tabla de resultados -->
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-            <thead class="table-dark">
-            <tr>
-                <th>Username</th>
-                <th>Institución</th>
-                <th>Grado</th>
-                <th>Turno</th>
-                <th>Fecha</th>
-                <th>Categoría</th>
-                <th>Pregunta</th>
-                <th>Respuesta</th>
-                <th>Comentario</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php if (pg_num_rows($resultado) > 0): ?>
-                <?php while ($fila = pg_fetch_assoc($resultado)): ?>
+        <!-- Tabla de resultados -->
+        <div class="table-responsive mt-4">
+            <table class="table table-bordered table-hover align-middle">
+                <thead>
                     <tr>
-                        <td><?= htmlspecialchars($fila['username']) ?></td>
-                        <td><?= htmlspecialchars($fila['nombre_institucion']) ?></td>
-                        <td><?= htmlspecialchars($fila['grado']) ?></td>
-                        <td><?= htmlspecialchars($fila['turno']) ?></td>
-                        <td><?= htmlspecialchars($fila['fecha']) ?></td>
-                        <td><?= htmlspecialchars($fila['categoria']) ?></td>
-                        <td><?= htmlspecialchars($fila['pregunta']) ?></td>
-                        <td><?= htmlspecialchars($fila['respuesta']) ?></td>
-                        <td><?= htmlspecialchars($fila['comentario']) ?></td>
+                        <th>Username</th>
+                        <th>Institución</th>
+                        <th>Grado</th>
+                        <th>Turno</th>
+                        <th>Fecha</th>
+                        <th>Categoría</th>
+                        <th>Pregunta</th>
+                        <th>Respuesta</th>
+                        <th>Comentario</th>
                     </tr>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <tr><td colspan="9" class="text-center">No se encontraron resultados.</td></tr>
-            <?php endif; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <?php if (pg_num_rows($resultado) > 0): ?>
+                    <?php while ($fila = pg_fetch_assoc($resultado)): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($fila['username']) ?></td>
+                            <td><?= htmlspecialchars($fila['nombre_institucion']) ?></td>
+                            <td><?= htmlspecialchars($fila['grado']) ?></td>
+                            <td><?= htmlspecialchars($fila['turno']) ?></td>
+                            <td><?= htmlspecialchars($fila['fecha']) ?></td>
+                            <td><?= htmlspecialchars($fila['categoria']) ?></td>
+                            <td><?= htmlspecialchars($fila['pregunta']) ?></td>
+                            <td><?= htmlspecialchars($fila['respuesta']) ?></td>
+                            <td><?= htmlspecialchars($fila['comentario']) ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="9" class="text-center text-muted">No se encontraron resultados.</td>
+                    </tr>
+                <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 </body>
