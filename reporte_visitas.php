@@ -19,9 +19,9 @@ if (!empty($username))    $condiciones[] = "per.username ILIKE '%$username%'";
 
 $where = count($condiciones) > 0 ? "WHERE " . implode(" AND ", $condiciones) : "";
 
-// Consulta SQL
+// Consulta SQL (SIN MODIFICACIONES AQUÍ)
 $query = "
-    SELECT r.cod_respuesta, i.nombre_institucion, r.grado, r.turno, r.fecha, 
+    SELECT r.cod_respuesta, i.nombre_institucion, r.grado, r.turno, r.fecha,
            p.categoria, p.pregunta, rd.respuesta, rd.comentario,
            per.username
     FROM respuestas r
@@ -36,37 +36,43 @@ $resultado = pg_query($conexion, $query);
 ?>
 
 <div class="container mt-4">
-    <div class="card p-4">
-        <h2 class="text-center mb-4">📋 Reporte de Visitas</h2>
+    <br><h2 class="text-center mb-4">📋 Reporte de Visitas</h2>
 
-    <!-- Formulario de filtros -->
-    <form method="GET" class="row g-2 mb-3">
+    <form method="GET" class="row g-3 mb-4 align-items-end">
         <div class="col-md-3">
-            <input type="text" name="institucion" value="<?= htmlspecialchars($institucion) ?>" class="form-control" placeholder="Institución">
+            <label for="institucion" class="form-label">Institución</label>
+            <input type="text" id="institucion" name="institucion" value="<?= htmlspecialchars($institucion) ?>" class="form-control" placeholder="Institución">
         </div>
         <div class="col-md-2">
-            <input type="text" name="grado" value="<?= htmlspecialchars($grado) ?>" class="form-control" placeholder="Grado">
+            <label for="grado" class="form-label">Grado</label>
+            <input type="text" id="grado" name="grado" value="<?= htmlspecialchars($grado) ?>" class="form-control" placeholder="Grado">
         </div>
         <div class="col-md-2">
-            <input type="text" name="turno" value="<?= htmlspecialchars($turno) ?>" class="form-control" placeholder="Turno">
+            <label for="turno" class="form-label">Turno</label>
+            <input type="text" id="turno" name="turno" value="<?= htmlspecialchars($turno) ?>" class="form-control" placeholder="Turno">
         </div>
         <div class="col-md-2">
-            <input type="date" name="fecha" value="<?= htmlspecialchars($fecha) ?>" class="form-control">
+            <label for="fecha" class="form-label">Fecha</label>
+            <input type="date" id="fecha" name="fecha" value="<?= htmlspecialchars($fecha) ?>" class="form-control">
         </div>
         <div class="col-md-3">
-            <input type="text" name="username" value="<?= htmlspecialchars($username) ?>" class="form-control" placeholder="Username">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" name="username" value="<?= htmlspecialchars($username) ?>" class="form-control" placeholder="Username">
         </div>
-        <div class="col-12">
+
+        <div class="col-12 mt-3">
             <button type="submit" class="btn btn-primary w-100"><i class="bi bi-search"></i> Buscar</button>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center gap-2 mt-3">
+            <a href="reporte_visitas.php" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Limpiar</a>
+            <a href="exportar_visitas_pdf.php?<?= http_build_query($_GET) ?>" class="btn btn-danger" target="_blank">
+                <i class="bi bi-file-earmark-pdf"></i> Exportar PDF
+            </a>
         </div>
     </form>
 
-    <div class="mb-3">
-        <a href="exportar_visitas_pdf.php?<?= http_build_query($_GET) ?>" class="btn btn-danger"><i class="bi bi-file-earmark-pdf"></i> Exportar PDF</a>
-    </div>
-
-    <!-- Tabla de resultados -->
-    <div class="table-responsive">
+    <div class="table-responsive p-4 shadow-sm" style="background-color: var(--bs-body-bg-rgb, white);">
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
             <tr>
