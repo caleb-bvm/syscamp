@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="mb-3">
             <label class="form-label">Rol</label>
             <select class="form-select" name="id_rol" required>
-                <option value="">-- Selecciona un rol --</option>
+                <option value="">Selecciona un rol</option>
                 <?php
                 $roles = pg_query($conexion, "SELECT * FROM rol");
                 while ($rol = pg_fetch_assoc($roles)) {
@@ -96,6 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="mb-3">
                 <label for="departamento" class="form-label">Departamento de residencia</label>
                 <select class="form-select" id="departamento" name="departamento" required>
+                     <option value="">Seleccione un departamento</option>
                     <?php 
                     $query = "SELECT * FROM departamento";
                     $resultado = pg_query($conexion, $query);
@@ -179,7 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="mb-3">
             <label class="form-label">Departamento donde labora</label>
             <select class="form-select" name="id_departamento_labora" required>
-                <option value="">-- Selecciona un departamento --</option>
+                <option value="">Selecciona un departamento</option>
                 <?php
                 $departamentos = pg_query($conexion, "SELECT * FROM departamento");
                 while ($depto = pg_fetch_assoc($departamentos)) {
