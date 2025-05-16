@@ -3,7 +3,7 @@
 
 $host = "localhost";
 $port = "5432";
-$dbname = "syscamp";
+$dbname = "bootcampst13";
 $user = "postgres";
 $password = "ivania0807"; // <-- cambia esto por la contraseña de tu usuario
 

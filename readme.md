@@ -44,7 +44,7 @@ con el apoyo mínimo de parte de los facilitadores y docentes encargados en las 
 utilizando unicamente las tecnologías impartidas en las clases del bootcamp, maximizando el uso del tiempo y distribución de tareas.
 
 
-
+Made with love;
 **Michael Caleb Ortiz Meléndez** , **Nathaly Ivania Martínez Guerrero** , **Ana María Peréz Carrillo** , **Jonathan Daniel Penado Sáncehz**
 
 **Instituto Nacional de San Miguel Tepezontes, Tercer año de Bachillerato Técnico Vocacional en Desarrollo de Software**
