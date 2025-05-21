@@ -43,7 +43,7 @@ $pdf = new FPDF('L', 'mm', 'A4');
 $pdf->SetMargins(5, 10, 5);
 $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 14);
-$pdf->Cell(0, 10, utf8_decode('📋 Reporte de Visitas a Instituciones'), 0, 1, 'C');
+$pdf->Cell(0, 10, ('📋 Reporte de Visitas a Instituciones'), 0, 1, 'C');
 $pdf->Ln(3);
 
 // Encabezado
@@ -55,7 +55,7 @@ $headers = ['Usuario', 'Institución', 'Grado', 'Turno', 'Fecha', 'Categoría', 
 $widths  = [25, 40, 20, 20, 25, 30, 60, 25, 40];
 
 foreach ($headers as $i => $col) {
-    $pdf->Cell($widths[$i], 7, utf8_decode($col), 1, 0, 'C', true);
+    $pdf->Cell($widths[$i], 7, ($col), 1, 0, 'C', true);
 }
 $pdf->Ln();
 
@@ -65,15 +65,15 @@ $pdf->SetTextColor(0);
 $line_height = 5;
 
 while ($fila = pg_fetch_assoc($resultado)) {
-    $pdf->Cell($widths[0], $line_height, utf8_decode($fila['username']), 1);
-    $pdf->Cell($widths[1], $line_height, utf8_decode($fila['nombre_institucion']), 1);
-    $pdf->Cell($widths[2], $line_height, utf8_decode($fila['grado']), 1);
-    $pdf->Cell($widths[3], $line_height, utf8_decode($fila['turno']), 1);
-    $pdf->Cell($widths[4], $line_height, utf8_decode($fila['fecha']), 1);
-    $pdf->Cell($widths[5], $line_height, utf8_decode($fila['categoria']), 1);
-    $pdf->Cell($widths[6], $line_height, utf8_decode(substr($fila['pregunta'], 0, 40)) . '...', 1);
-    $pdf->Cell($widths[7], $line_height, utf8_decode($fila['respuesta']), 1);
-    $pdf->Cell($widths[8], $line_height, utf8_decode(substr($fila['comentario'], 0, 40)) . '...', 1);
+    $pdf->Cell($widths[0], $line_height, ($fila['username']), 1);
+    $pdf->Cell($widths[1], $line_height, ($fila['nombre_institucion']), 1);
+    $pdf->Cell($widths[2], $line_height, ($fila['grado']), 1);
+    $pdf->Cell($widths[3], $line_height, ($fila['turno']), 1);
+    $pdf->Cell($widths[4], $line_height, ($fila['fecha']), 1);
+    $pdf->Cell($widths[5], $line_height, ($fila['categoria']), 1);
+    $pdf->Cell($widths[6], $line_height, (substr($fila['pregunta'], 0, 40)) . '...', 1);
+    $pdf->Cell($widths[7], $line_height, ($fila['respuesta']), 1);
+    $pdf->Cell($widths[8], $line_height, (substr($fila['comentario'], 0, 40)) . '...', 1);
     $pdf->Ln();
 }
 
