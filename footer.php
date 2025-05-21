@@ -1,7 +1,20 @@
+<footer class="bg-ministerio text-white py-2 mt-auto">
+    <div class="container-fluid">
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between text-center">
+            <!-- Texto izquierdo -->
+            <div class="mb-2 mb-md-0">
+                <h6 class="mb-0">Ministerio de Educación de El Salvador</h6>
+            </div>
 
-</div>
+            <!-- Logo centrado -->
+            <div class="mb-2 mb-md-0">
+                <img src="./recursos/mined.png" alt="Escudo del Ministerio" width="50" height="50">
+            </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-  </body>
-</html>
+            <!-- Texto derecho -->
+            <div>
+                <small>© 2025 Todos los derechos reservados</small>
+            </div>
+        </div>
+    </div>
+</footer>

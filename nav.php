@@ -31,38 +31,18 @@ if (!isset($_SESSION['username'])) {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="home.php">Inicio</a>
+                            <a class="nav-link" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="visitas.php">Visitar Centro Educativo</a>
+                            <a class="nav-link" href="contacto.php">Contacto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="form_persona.php">Añadir Gestores</a>
+                            <a class="nav-link" href="acerca.php">Acerca de</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="escuelas.php">Centros Educativos</a>
+                            <a class="nav-link" href="login.php">Iniciar Sesion</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="listar_preguntas.php">Preguntas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="insertar_pregunta.php">Insertar Pregunta</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="reportes.php">Reportes</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Configuracion
-                            </a>
-                            <ul class="dropdown-menu">
-                                <!--<li><a class="dropdown-item" href="ver_usuarios.php">Ver perfil</a></li>
-                                <li><hr class="dropdown-divider"></li> -->
-                                <li><a class="dropdown-item" href="editar_perfil.php">Editar perfil</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="cerrar.php">Cerrar sesión</a></li>
-                            </ul>
-                        </li>
+                        
                     </ul>
                     <a class="navbar-brand ms-auto" href="#">
                     <img src="mined.png" alt="Ministerio" height="80">
