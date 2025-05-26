@@ -475,3 +475,10 @@ p {
     color: var(--text-color) !important; /* Asegurar que el texto del footer sea legible (On Surface) */
 }
 
+#inicio .bg-image .position-absolute {
+  background-color: rgba(0, 20, 60, 0.4);
+}
+
+#inicio .text-white {
+  color: #FFFFFF !important;
+}

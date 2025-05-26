@@ -287,7 +287,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div class="d-grid gap-2">
                     <button type="button" class="btn btn-google">
-                        <img src="google-brands.svg" alt="Google Icon"> Continuar con Google
+                        <img src="recursos/google-brands.svg" alt="Google Icon"> Continuar con Google
                     </button>
                 </div>
                 <div class="text-center mt-3">
