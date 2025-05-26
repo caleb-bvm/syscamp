@@ -1,38 +1,88 @@
 :root {
-    --body-bg: #1C1B1F;
-    --text-color: #E6E1E5;
-    --header-bg: #2B2930;
-    --header-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    --brand-color: #D0BCFF;
-    --nav-link-color: #CAC4D0;
-    --nav-link-hover: #E8DEF8;
-    --active-nav-link: #E8DEF8;
-    --dropdown-bg: #36343B;
-    --dropdown-border: #4D4853;
-    --dropdown-item-color: #E6E1E5;
-    --dropdown-item-hover: #4D4853;
-    --dropdown-divider-color: #4D4853;
-    --form-control-bg: #36343B;
-    --form-control-border: #8E889C;
-    --form-control-text: #E6E1E5;
-    --form-control-placeholder: #CAC4D0;
-    --btn-primary-color: #D0BCFF;
-    --btn-primary-hover: #B69DF8;
-    --btn-primary-text-color: #381E72;
-    --btn-secondary-color: #4D4853;
-    --btn-secondary-hover: #605D68;
-    --btn-secondary-text-color: #E6E1E5;
-    --btn-success-color: #8BC34A;
-    --btn-success-hover: #7CB342;
+    /* Colores primarios y de superficie Material You (Claro) */
+    /* --body-bg: Superficie más clara, para el fondo general. */
+    --body-bg: #FFFBFE; /* Surface Container Lowest (Material You) - Blanco muy suave */
+    /* --text-color: Texto principal, debe tener un buen contraste con --body-bg y --header-bg. */
+    --text-color: #1C1B1F; /* On Surface (Material You) - Gris muy oscuro, casi negro */
+    /* --header-bg: Fondo para encabezados, tarjetas, dropdowns. Debe contrastar con --text-color. */
+    --header-bg: #F3EDF7; /* Surface Container (Material You) - Gris claro/malva suave */
+    --header-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+
+    /* Colores de marca y acento (Material You basado en un tono violeta) */
+    /* --brand-color: El color principal de tu marca, debe contrastar con --on-brand-color. */
+    --brand-color: #6750A4; /* Primary (Material You) - Violeta medio */
+    /* --brand-color-light: Para fondos sutiles de acento, como en elementos activos. */
+    --brand-color-light: #E8DEF8; /* Primary Container (Material You) - Violeta muy claro */
+    /* --on-brand-color: Color de texto que se usa sobre --brand-color. */
+    --on-brand-color: #FFFFFF; /* On Primary (Material You) - Blanco */
+
+    /* Navegación y enlaces */
+    /* --nav-link-color: Color de los enlaces de navegación inactivos. */
+    --nav-link-color: #49454F; /* On Surface Variant (Material You) - Gris oscuro, para texto secundario o enlaces */
+    /* --nav-link-hover: Color de los enlaces al pasar el ratón, para dar feedback. */
+    --nav-link-hover: #6750A4; /* Primary (Material You) - Violeta principal */
+    /* --active-nav-link: Color del enlace de navegación activo. */
+    --active-nav-link: #6750A4; /* Primary (Material You) - Violeta principal */
+
+    /* Dropdowns */
+    --dropdown-bg: #F3EDF7; /* Surface Container - Igual que header-bg */
+    --dropdown-border: #E6E1E5; /* Outline Variant - Borde gris claro */
+    --dropdown-item-color: #1C1B1F; /* On Surface - Texto oscuro */
+    --dropdown-item-hover: #E8DEF8; /* Primary Container - Fondo claro al pasar el ratón */
+    --dropdown-divider-color: #E6E1E5; /* Outline Variant - Línea divisoria */
+
+    /* Controles de formulario (inputs) */
+    --form-control-bg: #FFFBFE; /* Surface - Fondo del input casi blanco */
+    --form-control-border: #79747E; /* Outline - Borde gris legible */
+    --form-control-text: #1C1B1F; /* On Surface - Texto dentro del input oscuro */
+    --form-control-placeholder: #49454F; /* On Surface Variant - Placeholder gris oscuro legible */
+    --form-control-focus-border: #6750A4; /* Primary - Borde al enfocar */
+    --form-control-focus-shadow: rgba(103, 80, 164, 0.25); /* Sombra al enfocar */
+
+    /* Botones */
+    /* Primary Button */
+    --btn-primary-color: #6750A4; /* Primary - Color de fondo del botón principal */
+    --btn-primary-hover: #7F67BE; /* Tono más oscuro de Primary para hover */
+    --btn-primary-text-color: #FFFFFF; /* On Primary - Texto blanco sobre el botón principal */
+
+    /* Secondary Button */
+    --btn-secondary-color: #625B71; /* Secondary - Gris-violeta para botones secundarios */
+    --btn-secondary-hover: #7A7285; /* Tono más oscuro de Secondary para hover */
+    --btn-secondary-text-color: #FFFFFF; /* On Secondary - Texto blanco sobre el botón secundario */
+
+    /* Success Button */
+    --btn-success-color: #4CAF50; /* Verde accesible */
+    --btn-success-hover: #43A047;
     --btn-success-text-color: #FFFFFF;
-    --btn-outline-success-color: #D0BCFF;
-    --btn-outline-success-border: #D0BCFF;
-    --btn-outline-success-hover-bg: #D0BCFF;
-    --btn-outline-success-hover-color: #381E72;
-    --alert-info-bg: #3F3C46;
-    --alert-info-text: #E6E1E5;
-    --alert-info-border: #6F6C7D;
-    --alert-info-link: #D0BCFF;
+
+    /* Outline Button (Primary) */
+    --btn-outline-primary-color: #6750A4; /* Primary - Color del texto del botón outline */
+    --btn-outline-primary-border: #79747E; /* Outline - Borde gris legible */
+    --btn-outline-primary-hover-bg: #E8DEF8; /* Primary Container - Fondo para hover */
+    --btn-outline-primary-hover-color: #1C1B1F; /* On Primary Container - Texto oscuro para hover */
+
+    /* Alertas */
+    /* Info Alert */
+    --alert-info-bg: #E8DEF8; /* Primary Container - Fondo de alerta sutil */
+    --alert-info-text: #1C1B1F; /* On Primary Container - Texto oscuro legible */
+    --alert-info-border: #6750A4; /* Primary - Borde distintivo */
+    --alert-info-link: #6750A4; /* Primary - Enlace en alerta */
+
+    /* Danger Alert */
+    --alert-danger-bg: #FFDAD6; /* Error Container - Fondo de alerta de error */
+    --alert-danger-text: #410E0B; /* On Error Container - Texto oscuro legible */
+    --alert-danger-border: #BA1A1A; /* Error - Borde distintivo */
+
+
+    /* Variables RGB para las sombras */
+    --brand-color-rgb: 103, 80, 164;
+    --btn-primary-color-rgb: 103, 80, 164;
+    --btn-secondary-color-rgb: 98, 91, 113;
+    --btn-success-color-rgb: 76, 175, 80;
+    --btn-outline-primary-hover-bg-rgb: 232, 222, 248;
+    --nav-link-color-rgb: 73, 69, 79; /* RGB para nav-link-color */
+
+    /* Espaciado y radios de borde */
     --iframe-margin: 0 auto;
     --iframe-display: block;
     --global-padding: 1.5rem;
@@ -45,11 +95,25 @@
 }
 
 body {
+    display: flex; /* Añadido para el sticky footer */
+    flex-direction: column; /* Añadido para el sticky footer */
+    min-height: 100vh; /* Añadido para el sticky footer */
     background-color: var(--body-bg);
     color: var(--text-color);
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+}
+
+/* Contenedor principal que empuja el footer hacia abajo y centra el formulario (ej. login.php) */
+.content-wrap {
+    flex: 1; /* Permite que este elemento ocupe el espacio restante */
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    padding: 20px 0; /* Un poco de padding vertical */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
 }
 
 header {
@@ -62,13 +126,18 @@ header {
 }
 
 .navbar-brand {
-    color: var(--brand-color);
+    color: var(--brand-color); /* Asegurado un buen contraste con --header-bg */
     font-size: 1.8rem;
     font-weight: 700;
 }
 
+/* Icono del toggler para Bootstrap 5 */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%236750A4' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'%3e%3c/path%3e%3c/svg%3e") !important; /* Usar el Primary (violeta) para el icono */
+}
+
 .navbar-nav .nav-link {
-    color: var(--nav-link-color);
+    color: var(--nav-link-color); /* Contraste con --header-bg */
     margin-right: 1.25rem;
     font-weight: 500;
     transition: color 0.2s ease, background-color 0.2s ease;
@@ -78,42 +147,38 @@ header {
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-    color: var(--nav-link-hover);
-    background-color: rgba(var(--nav-link-hover), 0.1);
+    color: var(--nav-link-hover); /* Color de acento al pasar el ratón */
+    background-color: rgba(var(--brand-color-rgb), 0.1); /* Fondo sutil para hover */
 }
 
 .navbar-nav .nav-item.active .nav-link,
 .navbar-nav .nav-item .nav-link.active {
-    color: var(--active-nav-link);
+    color: var(--active-nav-link); /* Color de acento para el activo */
     font-weight: 600;
-    background-color: rgba(var(--active-nav-link), 0.2);
+    background-color: var(--brand-color-light); /* Fondo claro de acento para el activo */
 }
 
 .navbar-toggler {
-    border-color: rgba(var(--nav-link-color), 0.3);
+    border-color: rgba(var(--nav-link-color-rgb), 0.3); /* Borde sutil del toggler */
     border-radius: var(--border-radius);
     padding: 0.5rem 0.75rem;
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23CAC4D0' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'%3e%3c/path%3e%3c/svg%3e");
 }
 
 .navbar-toggler:hover,
 .navbar-toggler:focus {
     border-color: var(--brand-color);
-    box-shadow: 0 0 0 0.25rem rgba(var(--brand-color), 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(var(--brand-color-rgb), 0.25);
 }
 
 .dropdown-menu {
     background-color: var(--dropdown-bg);
     border: var(--border-width) solid var(--dropdown-border);
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-item {
-    color: var(--dropdown-item-color);
+    color: var(--dropdown-item-color); /* Texto oscuro legible */
     padding: 0.75rem 1.25rem;
     border-radius: var(--border-radius);
     margin: 0.25rem 0.5rem;
@@ -122,8 +187,8 @@ header {
 
 .dropdown-item:hover,
 .dropdown-item:focus {
-    background-color: var(--dropdown-item-hover);
-    color: var(--nav-link-hover);
+    background-color: var(--dropdown-item-hover); /* Fondo claro al pasar el ratón */
+    color: var(--dropdown-item-color); /* Mantener el color del texto oscuro */
 }
 
 .dropdown-divider {
@@ -132,25 +197,33 @@ header {
 }
 
 .form-control {
-    background-color: var(--form-control-bg);
-    border: var(--border-width) solid var(--form-control-border);
-    color: var(--form-control-text);
+    background-color: var(--form-control-bg); /* Fondo claro para el input */
+    border: var(--border-width) solid var(--form-control-border); /* Borde gris legible */
+    color: var(--form-control-text); /* Texto oscuro legible */
     border-radius: var(--border-radius);
     padding: 0.75rem 1rem;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-control:focus {
-    border-color: var(--brand-color);
-    box-shadow: 0 0 0 0.2rem rgba(var(--brand-color), 0.25);
-    background-color: var(--form-control-bg);
-    color: var(--form-control-text);
+    border-color: var(--form-control-focus-border); /* Borde de acento al enfocar */
+    box-shadow: 0 0 0 0.2rem var(--form-control-focus-shadow);
+    background-color: var(--form-control-bg); /* Mantener fondo al enfocar */
+    color: var(--form-control-text); /* Mantener color de texto al enfocar */
 }
 
 .form-control::placeholder {
-    color: var(--form-control-placeholder);
+    color: var(--form-control-placeholder); /* Placeholder gris oscuro legible */
     opacity: 0.7;
 }
+
+.input-group-text {
+    background-color: var(--form-control-bg); /* Fondo del input group igual al input */
+    border-color: var(--form-control-border);
+    color: var(--nav-link-color); /* Color de los iconos de input */
+    border-radius: var(--border-radius);
+}
+
 
 .btn {
     border-radius: var(--border-radius-lg);
@@ -163,7 +236,7 @@ header {
 }
 
 .btn-primary {
-    color: var(--btn-primary-text-color);
+    color: var(--btn-primary-text-color); /* Texto blanco sobre violeta */
     background-color: var(--btn-primary-color);
     border-color: var(--btn-primary-color);
 }
@@ -171,11 +244,11 @@ header {
 .btn-primary:hover {
     background-color: var(--btn-primary-hover);
     border-color: var(--btn-primary-hover);
-    box-shadow: 0 4px 8px rgba(var(--btn-primary-color), 0.3);
+    box-shadow: 0 4px 8px rgba(var(--btn-primary-color-rgb), 0.3);
 }
 
 .btn-secondary {
-    color: var(--btn-secondary-text-color);
+    color: var(--btn-secondary-text-color); /* Texto blanco sobre gris-violeta */
     background-color: var(--btn-secondary-color);
     border-color: var(--btn-secondary-color);
 }
@@ -183,11 +256,11 @@ header {
 .btn-secondary:hover {
     background-color: var(--btn-secondary-hover);
     border-color: var(--btn-secondary-hover);
-    box-shadow: 0 4px 8px rgba(var(--btn-secondary-color), 0.3);
+    box-shadow: 0 4px 8px rgba(var(--btn-secondary-color-rgb), 0.3);
 }
 
 .btn-success {
-    color: var(--btn-success-text-color);
+    color: var(--btn-success-text-color); /* Texto blanco sobre verde */
     background-color: var(--btn-success-color);
     border-color: var(--btn-success-color);
 }
@@ -195,28 +268,52 @@ header {
 .btn-success:hover {
     background-color: var(--btn-success-hover);
     border-color: var(--btn-success-hover);
-    box-shadow: 0 4px 8px rgba(var(--btn-success-color), 0.3);
+    box-shadow: 0 4px 8px rgba(var(--btn-success-color-rgb), 0.3);
 }
 
-.btn-outline-success {
-    color: var(--btn-outline-success-color);
-    border-color: var(--btn-outline-success-border);
+.btn-outline-primary { /* Cambio de btn-outline-success a primary para ser genérico */
+    color: var(--btn-outline-primary-color); /* Color violeta para el texto */
+    border-color: var(--btn-outline-primary-border); /* Borde gris legible */
     background-color: transparent;
 }
 
-.btn-outline-success:hover {
-    background-color: var(--btn-outline-success-hover-bg);
-    color: var(--btn-outline-success-hover-color);
-    border-color: var(--btn-outline-success-hover-bg);
-    box-shadow: 0 4px 8px rgba(var(--btn-outline-success-hover-bg), 0.3);
+.btn-outline-primary:hover {
+    background-color: var(--btn-outline-primary-hover-bg); /* Fondo claro al pasar el ratón */
+    color: var(--btn-outline-primary-hover-color); /* Texto oscuro al pasar el ratón */
+    border-color: var(--btn-outline-primary-hover-bg);
+    box-shadow: 0 4px 8px rgba(var(--btn-outline-primary-hover-bg-rgb), 0.3);
 }
+
+/* Botón de Google para login.php */
+.btn-google {
+    background-color: var(--form-control-bg); /* Fondo claro para el botón */
+    color: var(--form-control-text); /* Texto oscuro legible */
+    border: 1px solid var(--form-control-border); /* Borde claro */
+    border-radius: var(--border-radius-lg);
+    padding: 0.85rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.btn-google:hover {
+    background-color: var(--brand-color-light); /* Fondo de acento claro al pasar el ratón */
+    color: var(--text-color); /* Texto oscuro legible al pasar el ratón */
+    border-color: var(--brand-color); /* Borde de acento */
+}
+.btn-google img {
+    margin-right: 10px;
+    height: 24px;
+}
+
 
 iframe {
     margin: var(--iframe-margin);
     display: var(--iframe-display);
     max-width: 100%;
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     border: none;
 }
 
@@ -224,15 +321,19 @@ main {
     padding: var(--global-padding) 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color); /* Texto oscuro legible por defecto */
+}
+
 h1 {
-    color: var(--brand-color);
+    color: var(--brand-color); /* H1 con color de marca (violeta) */
     margin-bottom: 1.5rem;
     font-size: 2.5rem;
     font-weight: 700;
 }
 
 p {
-    color: var(--text-color);
+    color: var(--text-color); /* Párrafos con texto oscuro legible */
     line-height: 1.8;
     font-size: 1.05rem;
 }
@@ -247,10 +348,10 @@ p {
     background-color: var(--alert-info-bg);
     padding: var(--alert-padding-y) var(--alert-padding-x);
     margin-bottom: var(--alert-margin-bottom);
-    color: var(--alert-info-text);
+    color: var(--alert-info-text); /* Texto oscuro legible */
     border: var(--border-width) solid var(--alert-info-border);
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .alert-info hr {
@@ -258,7 +359,7 @@ p {
 }
 
 .alert-info .alert-link {
-    color: var(--alert-info-link);
+    color: var(--alert-info-link); /* Enlace de alerta de acento */
     font-weight: 600;
 }
 
@@ -268,8 +369,109 @@ p {
     text-decoration: underline;
 }
 
-.report-icon {
-font-size: 2.5rem;
-color: #D0BCFF;
-margin-right: 0.5rem;
+.alert-danger {
+    background-color: var(--alert-danger-bg);
+    color: var(--alert-danger-text); /* Texto oscuro de error legible */
+    border-color: var(--alert-danger-border);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.25rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+.alert-danger .btn-close {
+    color: var(--alert-danger-text); /* Asegurar que el icono de cierre sea legible */
+    opacity: 0.7;
+}
+.alert-danger .btn-close:hover {
+    opacity: 1;
+}
+
+.report-icon {
+    font-size: 2.5rem;
+    color: var(--brand-color); /* Icono con color de marca */
+    margin-right: 0.5rem;
+}
+
+/* Custom text colors based on variables */
+.text-brand {
+    color: var(--brand-color) !important;
+}
+
+.text-main {
+    color: var(--text-color) !important;
+}
+
+.text-subtle {
+    color: var(--nav-link-color) !important;
+}
+
+/* Custom card background (ahora será un fondo claro) */
+.card-bg-custom {
+    background-color: var(--header-bg) !important; /* Fondo de tarjeta = fondo de encabezado */
+    color: var(--text-color) !important; /* Texto oscuro */
+}
+
+/* Ensure links within text inherit custom colors */
+.text-main a,
+.text-subtle a {
+    color: var(--brand-color); /* Los enlaces en texto usan el color de marca para ser visibles */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.text-main a:hover,
+.text-subtle a:hover {
+    color: var(--nav-link-hover);
+    text-decoration: underline;
+}
+
+/* Adjust card button margins for better spacing */
+.card .btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 2rem);
+}
+
+/* Estilos específicos para las tarjetas de estadísticas en inicio.php */
+.card {
+    background-color: var(--header-bg); /* Fondo de la tarjeta: Surface Container */
+    color: var(--text-color); /* Color de texto principal de la tarjeta: On Surface */
+    border: 1px solid var(--dropdown-border); /* Borde sutil: Outline Variant */
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important; /* Sombra más suave */
+}
+
+.card-title {
+    color: var(--brand-color) !important; /* Títulos de tarjetas: Primary */
+    font-weight: 600;
+}
+
+.card-body h1.display-4 {
+    color: var(--text-color); /* Números grandes: On Surface */
+}
+
+.card-body p.text-muted { /* Bootstrap text-muted suele ser gris claro, lo redefinimos */
+    color: var(--nav-link-color) !important; /* Texto de descripción: On Surface Variant (gris oscuro) */
+}
+
+/* Sobrescribir bg-light para que sea el color del cuerpo */
+.bg-light {
+    background-color: var(--body-bg) !important;
+    color: var(--text-color);
+}
+
+/* Ajuste para la sección de inicio (hero section) en inicio.php */
+/* El color de superposición del fondo */
+#inicio .bg-image .position-absolute {
+    background-color: rgba(0, 20, 60, 0.4); /* Un azul oscuro semi-transparente para un buen contraste con texto blanco */
+}
+/* El texto dentro de la sección de inicio */
+#inicio .text-white { /* Aseguramos que cualquier texto marcado con text-white sea blanco */
+    color: #FFFFFF !important;
+}
+
+/* Footer (basado en bg-ministerio de tu index.php original) */
+.bg-ministerio {
+    background-color: var(--header-bg) !important; /* Usar el color del encabezado para el footer */
+    color: var(--text-color) !important; /* Asegurar que el texto del footer sea legible (On Surface) */
+}
+

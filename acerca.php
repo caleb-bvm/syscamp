@@ -1,4 +1,4 @@
-<?php include 'nav.php' ?>
+<?php include 'navuser.php' ?>
 
 <section id="acerca-de" class="py-5 bg-light"> <div class="container">
         <div class="row">

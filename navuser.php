@@ -1,4 +1,10 @@
-
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Inicio</a>
+                            <a class="nav-link" href="gestor.php">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contacto.php">Contacto</a>
@@ -34,12 +40,12 @@
                             <a class="nav-link" href="acerca.php">Acerca de</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.php">Iniciar Sesion</a>
+                            <a class="nav-link" href="cerrar.php">Cerrar sesión</a>
                         </li>
                         
                     </ul>
                     <a class="navbar-brand ms-auto" href="#">
-                    <img src="mined.png" alt="Ministerio" height="80">
+                    <img src="mined_black.png" alt="Ministerio" height="80">
                     </a>
                 </div>
             </div>

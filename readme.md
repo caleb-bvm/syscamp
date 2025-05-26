@@ -48,3 +48,10 @@ Made with love;
 **Michael Caleb Ortiz Meléndez** , **Nathaly Ivania Martínez Guerrero** , **Ana María Peréz Carrillo** , **Jonathan Daniel Penado Sáncehz**
 
 **Instituto Nacional de San Miguel Tepezontes, Tercer año de Bachillerato Técnico Vocacional en Desarrollo de Software**
+
+
+# Update
+
+Proyecto ganador del segundo lugar en el primer hackathon en programación organizado por el Ministerio de Educación de El Salvador, con el apoyo de la dirección de Tecnología e Innovación
+participando con el nombre de 'Sistema de Gestión Territorial' o 'SISGET'
+**Agradecimientos a Marvin Borja por las maravillosas ideas para mejorar el proyecto en el hackathon, por su liderazgo y apoyo para haber quedado en dicho lugar; Move Forward!**
